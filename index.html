@@ -2,26 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hell Let Loose Army Viewer</title>
+    <title>Tank Recognition Tool</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Tank Recognition Tool</h1>
-  <select id="category-select" onchange="updateVariations()">
-  <option value="german">German Army</option>
-  <option value="us">United States Army</option>
-  <option value="soviet">Soviet Armed Forces</option>
-  <option value="british">British Army</option>
-</select>
 
-<div id="variation-buttons"></div>
+        <select id="category-select" onchange="updateVariations()">
+            <option value="german">German Army</option>
+            <option value="us">United States Army</option>
+            <option value="soviet">Soviet Armed Forces</option>
+            <option value="british">British Army</option>
+        </select>
 
-<div id="image-container">
-  <img id="army-image" src="" alt="Select an army to view" />
-</div>
+        <hr class="divider" />
+
+        <div id="variation-buttons"></div>
+
+        <hr class="divider" />
+
+        <div id="image-container">
+            <img id="army-image" src="" alt="Army Visual" />
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
-    <script src="script.js"></script>
 </html>
