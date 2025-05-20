@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hell Let Loose Army Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Army Image Viewer</h1>
+        <label for="category">Select Army:</label>
+        <select id="category" onchange="updateVariations()">
+            <option value="">-- Choose a category --</option>
+            <option value="german">German Army</option>
+            <option value="us">United States Army</option>
+            <option value="soviet">Soviet Armed Forces</option>
+            <option value="british">British Army</option>
+        </select>
+        <div id="variation-buttons"></div>
+        <div id="image-container">
+            <img id="army-image" src="" alt="Select an army to view" />
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

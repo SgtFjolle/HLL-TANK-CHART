@@ -1,0 +1,44 @@
+body {
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.container {
+    background-color: #2a2a2a;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+select, button {
+    margin: 1rem 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+#image-container {
+    margin-top: 2rem;
+}
+
+#army-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border: 2px solid #555;
+    border-radius: 8px;
+}
