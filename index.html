@@ -2,29 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Tank Recognition Tool</title>
+    <title>Hell Let Loose Army Viewer</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="dark">
+<body>
+    <button id="mode-toggle">Toggle Mode</button>
     <div class="container">
-        <header>
-            <h1 class="headline">Tank Recognition Tool</h1>
-            <button id="theme-toggle">Toggle Theme</button>
-        </header>
+        <h1>Tank Recognition Tool</h1>
 
-        <label for="category-select">Select Faction:</label>
-        <select id="category-select" onchange="updateVariations()">
-            <option value="german">AXIS - German Army</option>
-            <option value="us">ALLIES - United States Army</option>
-            <option value="soviet">ALLIES - Soviet Armed Forces</option>
-            <option value="british">ALLIES - British Army</option>
-        </select>
+        <div class="select-row">
+            <label for="category-select">Select Faction:</label>
+            <select id="category-select" onchange="updateVariations()">
+                <option value="german">AXIS – German Army</option>
+                <option value="us">ALLIES – United States Army</option>
+                <option value="soviet">ALLIES – Soviet Armed Forces</option>
+                <option value="british">ALLIES – British Army</option>
+            </select>
+        </div>
 
-        <div id="variation-buttons"></div>
+        <div class="select-row">
+            <label>Select Variation:</label>
+            <div id="variation-buttons"></div>
+        </div>
+
         <div id="image-container">
-            <img id="army-image" src="" alt="Army Image" />
+            <img id="army-image" src="" alt="Army variation image" />
         </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
