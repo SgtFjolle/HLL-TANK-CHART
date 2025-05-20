@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Tank Recognition Tool</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet" />
 </head>
 <body>
     <div class="container">
         <h1>Tank Recognition Tool</h1>
-
-        <select id="category-select" onchange="updateVariations()">
-            <option value="german">🇩🇪 German Army</option>
-            <option value="us">🇺🇸 United States Army</option>
-            <option value="soviet">🇷🇺 Soviet Armed Forces</option>
-            <option value="british">🇬🇧 British Army</option>
-        </select>
-
+        <div class="faction-buttons">
+            <button data-category="axis">
+                <img src="helmet.svg" alt="Helmet Icon" />
+                German Army
+            </button>
+            <button data-category="us">
+                <img src="star.svg" alt="Star Icon" />
+                United States Army
+            </button>
+            <button data-category="soviet">
+                <img src="star.svg" alt="Star Icon" />
+                Soviet Armed Forces
+            </button>
+            <button data-category="british">
+                <img src="star.svg" alt="Star Icon" />
+                British Army
+            </button>
+        </div>
         <div id="variation-buttons"></div>
-
         <div id="image-container">
-            <img id="army-image" src="" alt="Army Visual" />
+            <img id="army-image" src="" alt="Army Preview" />
         </div>
     </div>
     <script src="script.js"></script>
