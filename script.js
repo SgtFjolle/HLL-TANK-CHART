@@ -34,7 +34,7 @@ function updateVariations() {
         variationButtons.appendChild(button);
     });
 
-    // Auto-select first variation
+    // Auto-select first
     const firstVariation = Object.keys(imageMap[category])[0];
     const firstButton = variationButtons.querySelector("button");
     if (firstVariation && firstButton) {
@@ -43,17 +43,14 @@ function updateVariations() {
 }
 
 function showImage(category, variation, clickedButton) {
-    // Button state
-    const allButtons = variationButtons.querySelectorAll("button");
-    allButtons.forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll("#variation-buttons button").forEach(btn => {
+        btn.classList.remove("active");
+    });
     if (clickedButton) clickedButton.classList.add("active");
 
-    // Smooth fade image
     armyImage.classList.remove("loaded");
     armyImage.src = imageMap[category][variation];
     armyImage.alt = variation;
-
-    // When image loads, fade it in
     armyImage.onload = () => {
         armyImage.classList.add("loaded");
     };
