@@ -1,36 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
     <title>Tank Recognition Tool</title>
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark">
     <div class="container">
-        <h1>Tank Recognition Tool</h1>
-        <div class="faction-buttons">
-            <button data-category="axis">
-                <img src="helmet.svg" alt="Helmet Icon" />
-                German Army
-            </button>
-            <button data-category="us">
-                <img src="star.svg" alt="Star Icon" />
-                United States Army
-            </button>
-            <button data-category="soviet">
-                <img src="star.svg" alt="Star Icon" />
-                Soviet Armed Forces
-            </button>
-            <button data-category="british">
-                <img src="star.svg" alt="Star Icon" />
-                British Army
-            </button>
-        </div>
+        <header>
+            <h1 class="headline">Tank Recognition Tool</h1>
+            <button id="theme-toggle">Toggle Theme</button>
+        </header>
+
+        <label for="category-select">Select Faction:</label>
+        <select id="category-select" onchange="updateVariations()">
+            <option value="german">AXIS - German Army</option>
+            <option value="us">ALLIES - United States Army</option>
+            <option value="soviet">ALLIES - Soviet Armed Forces</option>
+            <option value="british">ALLIES - British Army</option>
+        </select>
+
         <div id="variation-buttons"></div>
         <div id="image-container">
-            <img id="army-image" src="" alt="Army Preview" />
+            <img id="army-image" src="" alt="Army Image" />
         </div>
     </div>
     <script src="script.js"></script>
