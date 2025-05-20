@@ -1,32 +1,25 @@
 const categorySelect = document.getElementById('category-select');
 const variationButtons = document.getElementById('variation-buttons');
 const armyImage = document.getElementById('army-image');
-const themeToggle = document.getElementById('theme-toggle');
+const modeToggle = document.getElementById('mode-toggle');
 const body = document.body;
-
-const icons = {
-    "helmet": '<svg class="icon" viewBox="0 0 64 64" fill="currentColor"><path d="M8 32c0-13.3 10.7-24 24-24s24 10.7 24 24v4H8v-4z"/></svg>',
-    "snow": '<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.5 4h3L12 9l-4.5-3h3L12 2zm0 20l-1.5-4h-3L12 15l4.5 3h-3L12 22zm10-10l-4 1.5v3L15 12l3-4.5v3L22 12zm-20 0l4-1.5v-3L9 12l-3 4.5v-3L2 12zm16.24 6.24L15 15l1.24-3.24L18 15l-1.76 3.24zM5.76 5.76L9 9l-1.24 3.24L6 9l-1.76-3.24z"/></svg>',
-    "desert": '<svg class="icon" viewBox="0 0 64 64" fill="currentColor"><path d="M16 48l8-24 8 24h-16zm24 0l8-24 8 24h-16z"/></svg>',
-    "star": '<svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.26 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>'
-};
 
 const imageMap = {
     german: {
-        "German Army": { img: "german.jpg", icon: icons.helmet },
-        "German Army Winter Camo": { img: "german_winter.jpg", icon: icons.snow },
-        "German Africa Corps": { img: "german_africa.jpg", icon: icons.desert }
+        "German Army": { img: "german.jpg", icon: "🪖" },
+        "German Army Winter Camo": { img: "german_winter.jpg", icon: snowflakeIcon() },
+        "German Africa Corps": { img: "german_africa.jpg", icon: desertIcon() }
     },
     us: {
-        "United States Army": { img: "us.jpg", icon: icons.helmet },
-        "United States Army Winter Camo": { img: "us_winter.jpg", icon: icons.snow }
+        "United States Army": { img: "us.jpg", icon: "🪖" },
+        "United States Army Winter Camo": { img: "us_winter.jpg", icon: snowflakeIcon() }
     },
     soviet: {
-        "Soviet Armed Forces": { img: "soviet.jpg", icon: icons.star }
+        "Soviet Armed Forces": { img: "soviet.jpg", icon: starIcon() }
     },
     british: {
-        "British Army": { img: "british.jpg", icon: icons.helmet },
-        "British Eighth Army": { img: "british_eighth.jpg", icon: icons.desert }
+        "British Army": { img: "british.jpg", icon: "🪖" },
+        "British Eighth Army": { img: "british_eighth.jpg", icon: desertIcon() }
     }
 };
 
@@ -34,48 +27,69 @@ function updateVariations() {
     const category = categorySelect.value;
     variationButtons.innerHTML = "";
 
-    const variations = imageMap[category];
-    if (!variations) return;
+    if (!imageMap[category]) return;
 
-    Object.keys(variations).forEach((variation, index) => {
+    Object.entries(imageMap[category]).forEach(([variation, data], index) => {
         const button = document.createElement("button");
-        button.innerHTML = variations[variation].icon + variation;
+        button.className = "variation-button";
+        button.innerHTML = `${data.icon} ${variation}`;
         button.onclick = () => {
             showImage(category, variation);
-            setActiveButton(button);
+            highlightActiveButton(button);
         };
         variationButtons.appendChild(button);
 
-        // Auto-load first variation
+        // Auto-select first
         if (index === 0) {
             showImage(category, variation);
-            setActiveButton(button);
+            highlightActiveButton(button);
         }
     });
 }
 
 function showImage(category, variation) {
-    const image = imageMap[category][variation];
-    armyImage.src = image.img;
+    const data = imageMap[category][variation];
+    armyImage.src = data.img;
     armyImage.alt = variation;
 }
 
-function setActiveButton(activeButton) {
-    document.querySelectorAll("#variation-buttons button").forEach(btn => {
-        btn.classList.remove("active");
-    });
-    activeButton.classList.add("active");
+function highlightActiveButton(activeBtn) {
+    const buttons = document.querySelectorAll('.variation-button');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    activeBtn.classList.add('active');
 }
 
-// Theme toggle
-themeToggle.onclick = () => {
-    body.classList.toggle("light");
-    body.classList.toggle("dark");
+// Mode toggle
+modeToggle.onclick = () => {
+    body.classList.toggle('light-mode');
 };
 
-// On load
-window.onload = () => {
-    categorySelect.value = "german";
+// On page load
+window.onload = function () {
+    categorySelect.value = 'german';
     updateVariations();
 };
+
+// ICON DEFINITIONS
+function snowflakeIcon() {
+    return `
+    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 0v24M0 12h24M4.2 4.2l15.6 15.6M4.2 19.8L19.8 4.2" stroke="currentColor" stroke-width="2"/>
+    </svg>`;
+}
+
+function desertIcon() {
+    return `
+    <svg width="16" height="16" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 52L24 32L36 52H12Z" fill="#C2B280"/>
+        <path d="M32 52L44 32L56 52H32Z" fill="#C2B280"/>
+    </svg>`;
+}
+
+function starIcon() {
+    return `
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2l2.9 6.5L22 9.3l-5 4.9L18 22 12 18.2 6 22l1-7.8-5-4.9 7.1-0.8L12 2z"/>
+    </svg>`;
+}
 
