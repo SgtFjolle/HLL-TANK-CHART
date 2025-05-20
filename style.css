@@ -8,14 +8,15 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
     padding: 30px 20px;
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
+    color: #FFF5D8;
 }
 
 select {
@@ -23,7 +24,7 @@ select {
     color: #fff;
     border: 1px solid #444;
     border-radius: 6px;
-    padding: 6px 12px;
+    padding: 8px 14px;
     font-size: 1rem;
     margin-bottom: 20px;
 }
@@ -37,26 +38,28 @@ select {
     color: #fff;
     border: 1px solid #555;
     border-radius: 6px;
-    padding: 6px 12px;
-    margin: 5px;
+    padding: 5px 10px;
+    margin: 4px;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
 #variation-buttons button:hover {
     background-color: #444;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 #variation-buttons button.active {
     background-color: #666;
-    transform: translateY(2px);
+    transform: translateY(1px);
     box-shadow: inset 2px 2px 4px #00000080;
 }
 
 #image-container img {
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     border-radius: 8px;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
