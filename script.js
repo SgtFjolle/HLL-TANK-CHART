@@ -36,3 +36,19 @@ function updateVariations() {
         buttonsContainer.appendChild(button);
     });
 }
+// Automatically load the first variation
+if (Object.keys(imageMap[category]).length > 0) {
+    const firstVariation = Object.keys(imageMap[category])[0];
+    showImage(category, firstVariation);
+}
+
+// Automatically select German Army and its first variation on page load
+window.onload = function() {
+    categorySelect.value = 'german';
+    updateVariations();
+    // Select and trigger the first variation
+    const buttons = variationButtons.querySelectorAll('button');
+    if (buttons.length > 0) {
+        buttons[0].click();
+    }
+};
