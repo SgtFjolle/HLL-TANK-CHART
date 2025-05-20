@@ -38,6 +38,12 @@ function updateVariations() {
     const firstVariation = Object.keys(imageMap[category])[0];
     if (firstVariation) {
         showImage(category, firstVariation);
+        function showImage(category, variation) {
+    if (imageMap[category] && imageMap[category][variation]) {
+        armyImage.src = imageMap[category][variation];
+        armyImage.alt = variation;
+    }
+}
     }
 }
 
