@@ -1,19 +1,19 @@
 const imageMap = {
     german: {
-        'German Army': 'images/german.jpg',
-        'German Army Winter Camo': 'images/german_winter.jpg',
-        'German Africa Corps': 'images/german_africa.jpg'
+        'German Army': 'german.jpg',
+        'German Army Winter Camo': 'german_winter.jpg',
+        'German Africa Corps': 'german_africa.jpg'
     },
     us: {
-        'United States Army': 'images/us.jpg',
-        'United States Army Winter Camo': 'images/us_winter.jpg'
+        'United States Army': 'us.jpg',
+        'United States Army Winter Camo': 'us_winter.jpg'
     },
     soviet: {
-        'Soviet Armed Forces': 'images/soviet.jpg'
+        'Soviet Armed Forces': 'soviet.jpg'
     },
     british: {
-        'British Army': 'images/british.jpg',
-        'British Eighth Army': 'images/british_eighth.jpg'
+        'British Army': 'british.jpg',
+        'British Eighth Army': 'british_eighth.jpg'
     }
 };
 
