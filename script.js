@@ -1,58 +1,61 @@
+const categorySelect = document.getElementById('category-select');
+const variationButtons = document.getElementById('variation-buttons');
+const armyImage = document.getElementById('army-image');
+
 const imageMap = {
     german: {
-        'German Army': 'german.jpg',
-        'German Army Winter Camo': 'german_winter.jpg',
-        'German Africa Corps': 'german_africa.jpg'
+        "German Army": "images/german_standard.jpg",
+        "German Army Winter Camo": "images/german_winter.jpg",
+        "German Africa Corps": "images/german_africa.jpg"
     },
     us: {
-        'United States Army': 'us.jpg',
-        'United States Army Winter Camo': 'us_winter.jpg'
+        "United States Army": "images/us_standard.jpg",
+        "United States Army Winter Camo": "images/us_winter.jpg"
     },
     soviet: {
-        'Soviet Armed Forces': 'soviet.jpg'
+        "Soviet Armed Forces": "images/soviet_standard.jpg"
     },
     british: {
-        'British Army': 'british.jpg',
-        'British Eighth Army': 'british_eighth.jpg'
+        "British Army": "images/british_standard.jpg",
+        "British Eighth Army": "images/british_eighth.jpg"
     }
 };
 
 function updateVariations() {
-    const category = document.getElementById('category').value;
-    const buttonsContainer = document.getElementById('variation-buttons');
-    const imageElement = document.getElementById('army-image');
-    buttonsContainer.innerHTML = '';
-    imageElement.src = '';
+    const category = categorySelect.value;
+    variationButtons.innerHTML = "";
 
-    if (!category || !imageMap[category]) return;
+    if (!imageMap[category]) return;
 
     Object.keys(imageMap[category]).forEach(variation => {
-        const button = document.createElement('button');
+        const button = document.createElement("button");
         button.textContent = variation;
-        button.onclick = () => {
-            imageElement.src = imageMap[category][variation];
-            imageElement.alt = variation;
-        };
-        buttonsContainer.appendChild(button);
+        button.onclick = () => showImage(category, variation);
+        variationButtons.appendChild(button);
     });
-}
-// Automatically load the first variation
-if (Object.keys(imageMap[category]).length > 0) {
+
+    // Auto-select the first variation
     const firstVariation = Object.keys(imageMap[category])[0];
-    showImage(category, firstVariation);
+    if (firstVariation) {
+        showImage(category, firstVariation);
+    }
 }
 
-// Automatically select German Army and its first variation on page load
+function showImage(category, variation) {
+    armyImage.src = imageMap[category][variation];
+    armyImage.alt = variation;
+}
+
+// Auto-select German Army and its first variation on page load
 window.onload = function () {
     categorySelect.value = 'german';
     updateVariations();
 
-    // Delay slightly to ensure buttons are rendered before clicking
+    // Optional double-click for safety (redundant trigger if first one misses)
     setTimeout(() => {
-        const buttons = variationButtons.querySelectorAll('button');
+        const buttons = document.querySelectorAll('#variation-buttons button');
         if (buttons.length > 0) {
             buttons[0].click();
         }
-    }, 10);
+    }, 50);
 };
-
