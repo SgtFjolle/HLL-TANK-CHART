@@ -43,12 +43,16 @@ if (Object.keys(imageMap[category]).length > 0) {
 }
 
 // Automatically select German Army and its first variation on page load
-window.onload = function() {
+window.onload = function () {
     categorySelect.value = 'german';
     updateVariations();
-    // Select and trigger the first variation
-    const buttons = variationButtons.querySelectorAll('button');
-    if (buttons.length > 0) {
-        buttons[0].click();
-    }
+
+    // Delay slightly to ensure buttons are rendered before clicking
+    setTimeout(() => {
+        const buttons = variationButtons.querySelectorAll('button');
+        if (buttons.length > 0) {
+            buttons[0].click();
+        }
+    }, 10);
 };
+
