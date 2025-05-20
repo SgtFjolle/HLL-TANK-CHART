@@ -1,62 +1,70 @@
-const categorySelect = document.getElementById('category-select');
-const variationButtons = document.getElementById('variation-buttons');
-const armyImage = document.getElementById('army-image');
-
-const imageMap = {
-    german: {
-        "German Army": "german.jpg",
-        "German Army Winter Camo": "german_winter.jpg",
-        "German Africa Corps": "german_africa.jpg"
-    },
-    us: {
-        "United States Army": "us.jpg",
-        "United States Army Winter Camo": "us_winter.jpg"
-    },
-    soviet: {
-        "Soviet Armed Forces": "soviet.jpg"
-    },
-    british: {
-        "British Army": "british.jpg",
-        "British Eighth Army": "british_eighth.jpg"
-    }
-};
-
-function updateVariations() {
-    const category = categorySelect.value;
-    variationButtons.innerHTML = "";
-
-    if (!imageMap[category]) return;
-
-    Object.keys(imageMap[category]).forEach(variation => {
-        const button = document.createElement("button");
-        button.textContent = variation;
-        button.onclick = () => showImage(category, variation, button);
-        variationButtons.appendChild(button);
-    });
-
-    // Auto-select first
-    const firstVariation = Object.keys(imageMap[category])[0];
-    const firstButton = variationButtons.querySelector("button");
-    if (firstVariation && firstButton) {
-        showImage(category, firstVariation, firstButton);
-    }
+body {
+    background-color: #1c1c1c;
+    font-family: 'Merriweather', serif;
+    color: #eaeaea;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
-function showImage(category, variation, clickedButton) {
-    document.querySelectorAll("#variation-buttons button").forEach(btn => {
-        btn.classList.remove("active");
-    });
-    if (clickedButton) clickedButton.classList.add("active");
-
-    armyImage.classList.remove("loaded");
-    armyImage.src = imageMap[category][variation];
-    armyImage.alt = variation;
-    armyImage.onload = () => {
-        armyImage.classList.add("loaded");
-    };
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 20px;
 }
 
-window.onload = function () {
-    categorySelect.value = 'german';
-    updateVariations();
-};
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #FFF5D8;
+}
+
+select {
+    background-color: #2a2a2a;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 8px 14px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+#variation-buttons {
+    margin-bottom: 20px;
+}
+
+#variation-buttons button {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 6px;
+    padding: 5px 10px;
+    margin: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+#variation-buttons button:hover {
+    background-color: #444;
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+#variation-buttons button.active {
+    background-color: #666;
+    transform: translateY(1px);
+    box-shadow: inset 2px 2px 4px #00000080;
+}
+
+#image-container img {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#army-image.loaded {
+    opacity: 1;
+}
