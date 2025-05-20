@@ -30,38 +30,36 @@ function updateVariations() {
     Object.keys(imageMap[category]).forEach(variation => {
         const button = document.createElement("button");
         button.textContent = variation;
-        button.onclick = () => showImage(category, variation);
+        button.onclick = () => showImage(category, variation, button);
         variationButtons.appendChild(button);
     });
 
-    // Auto-select the first variation
+    // Auto-select first variation
     const firstVariation = Object.keys(imageMap[category])[0];
-    if (firstVariation) {
-        showImage(category, firstVariation);
-        function showImage(category, variation) {
-    if (imageMap[category] && imageMap[category][variation]) {
-        armyImage.src = imageMap[category][variation];
-        armyImage.alt = variation;
-    }
-}
+    const firstButton = variationButtons.querySelector("button");
+    if (firstVariation && firstButton) {
+        showImage(category, firstVariation, firstButton);
     }
 }
 
-function showImage(category, variation) {
+function showImage(category, variation, clickedButton) {
+    // Button state
+    const allButtons = variationButtons.querySelectorAll("button");
+    allButtons.forEach(btn => btn.classList.remove("active"));
+    if (clickedButton) clickedButton.classList.add("active");
+
+    // Smooth fade image
+    armyImage.classList.remove("loaded");
     armyImage.src = imageMap[category][variation];
     armyImage.alt = variation;
+
+    // When image loads, fade it in
+    armyImage.onload = () => {
+        armyImage.classList.add("loaded");
+    };
 }
 
-// Auto-select German Army and its first variation on page load
 window.onload = function () {
     categorySelect.value = 'german';
     updateVariations();
-
-    // Optional double-click for safety (redundant trigger if first one misses)
-    setTimeout(() => {
-        const buttons = document.querySelectorAll('#variation-buttons button');
-        if (buttons.length > 0) {
-            buttons[0].click();
-        }
-    }, 50);
 };
