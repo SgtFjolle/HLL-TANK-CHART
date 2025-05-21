@@ -1,75 +1,80 @@
-const categorySelect = document.getElementById("category-select");
-const variationButtons = document.getElementById("variation-buttons");
-const armyImage = document.getElementById("army-image");
-const headline = document.getElementById("headline");
+const categorySelect = document.getElementById('category-select');
+const variationButtons = document.getElementById('variation-buttons');
+const armyImage = document.getElementById('army-image');
 
 const imageMap = {
     axis: {
-        "German Army": { file: "german.jpg", icon: "helmet.svg" },
-        "German Army Winter Camo": { file: "german_winter.jpg", icon: "snow.svg" },
-        "German Africa Corps": { file: "german_africa.jpg", icon: "desert.svg" }
+        "German Army": "german.jpg",
+        "German Army Winter Camo": "german_winter.jpg",
+        "German Africa Corps": "german_africa.jpg"
     },
-    allies_us: {
-        "United States Army": { file: "us.jpg", icon: "helmet.svg" },
-        "United States Army Winter Camo": { file: "us_winter.jpg", icon: "snow.svg" }
-    },
-    allies_soviet: {
-        "Soviet Armed Forces": { file: "soviet.jpg", icon: "star.svg" }
-    },
-    allies_british: {
-        "British Army": { file: "british.jpg", icon: "helmet.svg" },
-        "British Eighth Army": { file: "british_eighth.jpg", icon: "desert.svg" }
+    allies: {
+        "United States Army": "us.jpg",
+        "United States Army Winter Camo": "us_winter.jpg",
+        "Soviet Armed Forces": "soviet.jpg",
+        "British Army": "british.jpg",
+        "British Eighth Army": "british_eighth.jpg"
     }
 };
 
-function toggleTheme() {
-    const body = document.body;
-    const icon = document.querySelector(".theme-toggle");
-
-    body.classList.toggle("dark-mode");
-    body.classList.toggle("light-mode");
-
-    icon.textContent = body.classList.contains("dark-mode") ? "🌙" : "☀️";
-}
+const variationIcons = {
+    "German Army Winter Camo": "snowflake.svg",
+    "German Africa Corps": "desert.svg",
+    "United States Army Winter Camo": "snowflake.svg",
+    "British Eighth Army": "desert.svg"
+};
 
 function updateVariations() {
-    const category = categorySelect.value;
+    const selected = categorySelect.value;
     variationButtons.innerHTML = "";
 
-    if (!imageMap[category]) return;
+    const categoryMap = selected === "axis" ? imageMap.axis : imageMap.allies;
+    const addedVariations = new Set();
 
-    Object.keys(imageMap[category]).forEach((variationName, index) => {
-        const variation = imageMap[category][variationName];
+    for (const [variation, file] of Object.entries(categoryMap)) {
+        if (addedVariations.has(variation)) continue;
+
         const button = document.createElement("button");
-        button.className = "variation-btn";
-        button.innerHTML = `<img src="${variation.icon}" alt="">${variationName}`;
-        button.onclick = () => {
-            showImage(category, variationName);
-            document.querySelectorAll('.variation-btn').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-        };
+        button.className = "variation-button";
+        button.onclick = () => showImage(selected, variation, button);
+
+        if (variationIcons[variation]) {
+            const icon = document.createElement("img");
+            icon.src = variationIcons[variation];
+            icon.alt = "icon";
+            icon.className = "variation-icon";
+            button.appendChild(icon);
+        }
+
+        const label = document.createElement("span");
+        label.textContent = variation;
+        button.appendChild(label);
         variationButtons.appendChild(button);
 
-        if (index === 0) {
-            showImage(category, variationName);
-            button.classList.add("active");
-        }
-    });
+        addedVariations.add(variation);
+    }
+
+    // Auto-select first variation
+    const firstButton = variationButtons.querySelector("button");
+    if (firstButton) {
+        firstButton.click();
+    }
 }
 
-function showImage(category, variationName) {
-    const imageInfo = imageMap[category][variationName];
-    armyImage.style.opacity = 0;
-    setTimeout(() => {
-        armyImage.src = imageInfo.file;
-        armyImage.alt = variationName;
-        armyImage.style.opacity = 1;
-    }, 200);
+function showImage(categoryGroup, variation, clickedButton) {
+    const file = imageMap[categoryGroup][variation];
+    if (!file) return;
+
+    armyImage.src = file;
+    armyImage.alt = variation;
+
+    // Highlight the active button
+    document.querySelectorAll('.variation-button').forEach(btn => btn.classList.remove('active'));
+    if (clickedButton) clickedButton.classList.add('active');
 }
 
-// Load default on page load
-window.onload = function () {
-    categorySelect.value = "axis";
+window.onload = () => {
+    categorySelect.value = 'axis';
     updateVariations();
 };
 
