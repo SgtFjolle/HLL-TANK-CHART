@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Hell Let Loose Army Viewer</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-    <button id="mode-toggle">Toggle Mode</button>
-    <div class="container">
+<body class="dark-mode">
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</div>
+
+    <div class="section headline">
         <h1>Tank Recognition Tool</h1>
+    </div>
 
-        <div class="select-row">
-            <label for="category-select">Select Faction:</label>
-            <select id="category-select" onchange="updateVariations()">
-                <option value="german">AXIS – German Army</option>
-                <option value="us">ALLIES – United States Army</option>
-                <option value="soviet">ALLIES – Soviet Armed Forces</option>
-                <option value="british">ALLIES – British Army</option>
-            </select>
-        </div>
+    <div class="section faction-select">
+        <label for="category-select">Select Faction:</label>
+        <select id="category-select" onchange="updateVariations()">
+            <option value="axis">AXIS</option>
+            <option value="allies_us">ALLIES - US</option>
+            <option value="allies_soviet">ALLIES - Soviet</option>
+            <option value="allies_british">ALLIES - British</option>
+        </select>
+    </div>
 
-        <div class="select-row">
-            <label>Select Variation:</label>
-            <div id="variation-buttons"></div>
-        </div>
+    <div class="section variation-select">
+        <label>Select Variation:</label>
+        <div id="variation-buttons"></div>
+    </div>
 
-        <div id="image-container">
-            <img id="army-image" src="" alt="Army variation image" />
-        </div>
+    <div class="section image-container">
+        <img id="army-image" src="" alt="Army Visual" />
     </div>
 
     <script src="script.js"></script>
