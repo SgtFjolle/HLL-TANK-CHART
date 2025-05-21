@@ -1,6 +1,7 @@
 const categorySelect = document.getElementById("category-select");
 const variationButtons = document.getElementById("variation-buttons");
 const armyImage = document.getElementById("army-image");
+const headline = document.getElementById("headline");
 
 const imageMap = {
     axis: {
@@ -21,13 +22,13 @@ const imageMap = {
     }
 };
 
-// Theme toggle
 function toggleTheme() {
     const body = document.body;
+    const icon = document.querySelector(".theme-toggle");
+
     body.classList.toggle("dark-mode");
     body.classList.toggle("light-mode");
 
-    const icon = document.querySelector(".theme-toggle");
     icon.textContent = body.classList.contains("dark-mode") ? "🌙" : "☀️";
 }
 
@@ -66,7 +67,7 @@ function showImage(category, variationName) {
     }, 200);
 }
 
-// Load initial category
+// Load default on page load
 window.onload = function () {
     categorySelect.value = "axis";
     updateVariations();
