@@ -50,14 +50,14 @@ function updateVariations(isOverlay = false) {
     };
     target.appendChild(button);
 
-    if (index === 0 && !currentVariation) {
+    if (index === 0 && !isOverlay) {
       button.click();
     }
   });
 
   if (!isOverlay) {
     overlayCategory.value = category;
-    updateVariations(true); // Update overlay buttons
+    updateVariations(true);
   }
 }
 
@@ -78,15 +78,17 @@ fullscreenToggle.onclick = () => {
   fullscreenToggle.classList.toggle('active', isFullscreen);
   overlay.classList.toggle('hidden', !isFullscreen);
 
-  // Sync overlay UI
-  overlayCategory.value = currentCategory;
-  updateVariations(true);
+  if (isFullscreen) {
+    overlayCategory.value = currentCategory;
+    updateVariations(true);
+  }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   categorySelect.value = 'german';
   updateVariations();
 });
+
 
 
 
