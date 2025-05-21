@@ -9,27 +9,29 @@
 <body class="dark-mode">
     <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</div>
 
-    <div class="section headline">
-        <h1>Tank Recognition Tool</h1>
-    </div>
+    <div class="wrapper">
+        <h1 id="headline">Tank Recognition Tool</h1>
 
-    <div class="section faction-select">
-        <label for="category-select">Select Faction:</label>
-        <select id="category-select" onchange="updateVariations()">
-            <option value="axis">AXIS</option>
-            <option value="allies_us">ALLIES - US</option>
-            <option value="allies_soviet">ALLIES - Soviet</option>
-            <option value="allies_british">ALLIES - British</option>
-        </select>
-    </div>
+        <div class="top-controls">
+            <div class="control-group">
+                <label for="category-select">Select Faction:</label>
+                <select id="category-select" onchange="updateVariations()">
+                    <option value="axis">AXIS - Germany</option>
+                    <option value="allies_us">ALLIES - US</option>
+                    <option value="allies_soviet">ALLIES - Soviet</option>
+                    <option value="allies_british">ALLIES - British</option>
+                </select>
+            </div>
 
-    <div class="section variation-select">
-        <label>Select Variation:</label>
-        <div id="variation-buttons"></div>
-    </div>
+            <div class="control-group">
+                <label>Select Variation:</label>
+                <div id="variation-buttons"></div>
+            </div>
+        </div>
 
-    <div class="section image-container">
-        <img id="army-image" src="" alt="Army Visual" />
+        <div class="image-container">
+            <img id="army-image" src="" alt="Army Visual" />
+        </div>
     </div>
 
     <script src="script.js"></script>
