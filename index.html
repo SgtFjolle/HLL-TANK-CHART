@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hell Let Loose Army Viewer</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tank Recognition Tool</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
 </head>
-<body class="dark-mode">
-    <div class="container">
-        <header>
-            <h1 id="main-title">Tank Recognition Tool</h1>
-            <button id="toggle-theme" aria-label="Toggle theme"></button>
-        </header>
+<body>
+  <div class="container">
+    <header>
+      <h1 id="main-title">Tank Recognition Tool</h1>
+      <button id="toggle-theme">🌙</button>
+    </header>
 
-        <div class="panel">
-            <label for="category-select">Select Faction:</label>
-            <select id="category-select" onchange="updateVariations()">
-                <option value="german">AXIS – Germany</option>
-                <option value="us">ALLIES – United States</option>
-                <option value="soviet">ALLIES – Soviet Union</option>
-                <option value="british">ALLIES – Britain</option>
-            </select>
-        </div>
-
-        <div class="panel">
-            <span>Select Variation:</span>
-            <div id="variation-buttons" class="button-group"></div>
-        </div>
-
-        <div id="image-container">
-            <img id="army-image" src="" alt="Army visual" />
-        </div>
+    <div class="panel">
+      <label for="category-select">Select Faction:</label>
+      <select id="category-select" onchange="updateVariations()">
+        <option value="german">AXIS - Germany</option>
+        <option value="us">ALLIES - United States</option>
+        <option value="soviet">ALLIES - Soviet Union</option>
+        <option value="british">ALLIES - Britain</option>
+      </select>
     </div>
 
-    <script src="script.js"></script>
+    <div class="panel">
+      <label>Select Variation:</label>
+      <div id="variation-buttons" class="button-group"></div>
+    </div>
+
+    <div id="image-container">
+      <img id="army-image" src="" alt="Selected army image" />
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
 
