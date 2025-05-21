@@ -252,7 +252,7 @@ body.light-mode .map-answer.active {
     /* take it out of the normal flow */
     position: absolute;
     top: 0; /* align with top of image-container */
-    left: calc(50% - 450px - 220px - 60px);
+    left: calc(50% - 450px - 220px - 50px);
     width: 220px;
     /* no transform needed */
   }
