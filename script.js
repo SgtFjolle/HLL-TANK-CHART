@@ -130,7 +130,7 @@ const mapData = {
     axis:   { category: 'german', variation: 'German Army' }
   },
   "Stalingrad": {
-    allies: { category: 'soviet', variation: 'Soviet Winter Camo' },
+    allies: { category: 'soviet', variation: 'Soviet' },
     axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Tobruk": {
