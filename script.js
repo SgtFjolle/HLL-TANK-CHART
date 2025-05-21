@@ -3,9 +3,6 @@ const variationButtons = document.getElementById('variation-buttons');
 const armyImage = document.getElementById('army-image');
 const modeToggle = document.getElementById('mode-toggle');
 const fullscreenToggle = document.getElementById('fullscreen-toggle');
-const overlay = document.getElementById('fullscreen-overlay');
-const overlayCategory = document.getElementById('overlay-category');
-const overlayButtons = document.getElementById('overlay-variation-buttons');
 
 const imageMap = {
   german: {
@@ -29,15 +26,12 @@ const imageMap = {
 let currentCategory = 'german';
 let currentVariation = '';
 
-function updateVariations(isOverlay = false) {
-  const category = isOverlay ? overlayCategory.value : categorySelect.value;
+function updateVariations() {
+  const category = categorySelect.value;
   currentCategory = category;
-
-  const target = isOverlay ? overlayButtons : variationButtons;
-  target.innerHTML = "";
-
   const variations = imageMap[category];
-  if (!variations) return;
+
+  variationButtons.innerHTML = "";
 
   Object.keys(variations).forEach((variation, index) => {
     const button = document.createElement("button");
@@ -45,20 +39,15 @@ function updateVariations(isOverlay = false) {
     button.onclick = () => {
       showImage(category, variation);
       currentVariation = variation;
-      target.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
+      variationButtons.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
     };
-    target.appendChild(button);
+    variationButtons.appendChild(button);
 
-    if (index === 0 && !isOverlay) {
+    if (index === 0) {
       button.click();
     }
   });
-
-  if (!isOverlay) {
-    overlayCategory.value = category;
-    updateVariations(true);
-  }
 }
 
 function showImage(category, variation) {
@@ -76,18 +65,13 @@ function toggleMode() {
 fullscreenToggle.onclick = () => {
   const isFullscreen = document.body.classList.toggle('fullscreen-mode');
   fullscreenToggle.classList.toggle('active', isFullscreen);
-  overlay.classList.toggle('hidden', !isFullscreen);
-
-  if (isFullscreen) {
-    overlayCategory.value = currentCategory;
-    updateVariations(true);
-  }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   categorySelect.value = 'german';
   updateVariations();
 });
+
 
 
 
