@@ -133,7 +133,7 @@ select {
   transition: all 0.4s ease;
 }
 
-/* Fullscreen layout */
+/* --- FULLSCREEN MODE --- */
 .fullscreen-mode .container {
   max-width: 90vw;
   width: 90vw;
@@ -145,7 +145,7 @@ select {
 .fullscreen-mode .controls-combined {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
@@ -153,27 +153,32 @@ select {
 }
 
 .fullscreen-mode .control-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  display: none;
 }
 
-.fullscreen-mode .faction-select-group,
-.fullscreen-mode .variation-select-group,
-.fullscreen-mode .fullscreen-right {
+.fullscreen-mode .faction-select-group {
+  flex: 1;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 0;
+  min-width: 150px;
 }
 
 .fullscreen-mode .variation-select-group {
-  flex: 1;
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-top: 0;
+}
+
+.fullscreen-mode .fullscreen-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 150px;
 }
 
 .fullscreen-mode #image-container {
@@ -192,7 +197,7 @@ select {
   max-height: 85vh;
 }
 
-/* Light mode */
+/* --- LIGHT MODE --- */
 body.light-mode {
   background-color: #f2f2f2;
   color: #111;
