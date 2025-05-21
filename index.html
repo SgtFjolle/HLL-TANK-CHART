@@ -14,7 +14,7 @@
 
     <div class="controls-bar">
       <div class="section controls-combined">
-        <div class="control-row">
+        <div class="fullscreen-layout-row">
           <div class="faction-select-group">
             <label for="category-select">Select Faction:</label>
             <select id="category-select" onchange="updateVariations()">
@@ -25,14 +25,14 @@
             </select>
           </div>
 
+          <div class="variation-select-group">
+            <label>Select Variation:</label>
+            <div id="variation-buttons"></div>
+          </div>
+
           <div class="fullscreen-right">
             <button id="fullscreen-toggle">Toggle Fullscreen</button>
           </div>
-        </div>
-
-        <div class="variation-select-group">
-          <label>Select Variation:</label>
-          <div id="variation-buttons"></div>
         </div>
       </div>
     </div>
