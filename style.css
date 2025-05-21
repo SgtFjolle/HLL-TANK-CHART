@@ -1,124 +1,157 @@
 body {
-    margin: 0;
-    font-family: 'Merriweather', serif;
-    background-color: #1a1a1a;
-    color: #fff5d8;
-    transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+  font-family: 'Merriweather', serif;
+  background-color: #1a1a1a;
+  color: #fff5d8;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 h1 {
-    font-size: 2em;
-    margin: 0;
-    color: #FFF5D8;
+  font-size: 2em;
+  margin: 0;
+  color: #FFF5D8;
 }
 
 #mode-toggle {
-    font-size: 1.2em;
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    z-index: 10;
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .section {
-    margin-bottom: 25px;
-    padding: 15px;
-    background-color: #2a2a2a;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 select {
-    padding: 8px;
-    font-size: 1em;
-    background-color: #333;
-    color: #fff5d8;
-    border: 1px solid #555;
-    border-radius: 4px;
+  padding: 8px;
+  font-size: 1em;
+  background-color: #333;
+  color: #fff5d8;
+  border: 1px solid #555;
+  border-radius: 4px;
 }
 
 .variation-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
 }
 
 #variation-buttons button {
-    margin: 4px 4px 0 0;
-    padding: 10px 14px;
-    background-color: #3a3a3a;
-    border: 1px solid #666;
-    color: #fff5d8;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+  margin: 4px 4px 0 0;
+  padding: 10px 14px;
+  background-color: #3a3a3a;
+  border: 1px solid #666;
+  color: #fff5d8;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 #variation-buttons button:hover {
-    background-color: #505050;
+  background-color: #505050;
 }
 
 #variation-buttons button.active {
-    background-color: #777;
-    transform: scale(0.98);
+  background-color: #777;
+  transform: scale(0.98);
 }
 
 #image-container {
-    text-align: center;
-    margin-top: 30px;
-    border: 2px solid #444;
-    padding: 15px;
-    background-color: #111;
-    border-radius: 8px;
+  text-align: center;
+  margin-top: 30px;
+  border: 2px solid #444;
+  padding: 15px;
+  background-color: #111;
+  border-radius: 8px;
 }
 
 #army-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Fullscreen Toggle Button */
+#fullscreen-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#fullscreen-toggle {
+  font-family: 'Merriweather', serif;
+  font-size: 14px;
+  padding: 10px 16px;
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #777;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#fullscreen-toggle:hover {
+  background-color: #666;
+}
+
+#fullscreen-toggle.active {
+  background-color: #888;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+  transform: translateY(1px);
 }
 
 /* Light mode */
 body.light-mode {
-    background-color: #f2f2f2;
-    color: #111;
+  background-color: #f2f2f2;
+  color: #111;
 }
 
 body.light-mode h1 {
-    color: #000;
+  color: #000;
 }
 
 body.light-mode .section {
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 body.light-mode select,
-body.light-mode #variation-buttons button {
-    background-color: #ddd;
-    color: #000;
-    border: 1px solid #aaa;
+body.light-mode #variation-buttons button,
+body.light-mode #fullscreen-toggle {
+  background-color: #ddd;
+  color: #000;
+  border: 1px solid #aaa;
 }
 
-body.light-mode #variation-buttons button.active {
-    background-color: #bbb;
+body.light-mode #variation-buttons button:hover,
+body.light-mode #fullscreen-toggle:hover {
+  background-color: #ccc;
 }
 
+body.light-mode #variation-buttons button.active,
+body.light-mode #fullscreen-toggle.active {
+  background-color: #bbb;
+}
 
 
