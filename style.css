@@ -52,20 +52,28 @@ h1 {
 
 .fullscreen-layout-row {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.faction-select-group,
-.variation-select-group,
-.fullscreen-right {
+.faction-select-group {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  flex: 1;
-  min-width: 150px;
+  gap: 10px;
+}
+
+.variation-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.variation-select-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 select {
@@ -109,7 +117,10 @@ select {
 }
 
 .fullscreen-right {
-  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
 }
 
 #image-container {
