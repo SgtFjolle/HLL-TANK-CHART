@@ -52,8 +52,10 @@ h1 {
 
 .fullscreen-layout-row {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .faction-select-group,
@@ -61,8 +63,9 @@ h1 {
 .fullscreen-right {
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex: 1;
+  min-width: 150px;
 }
 
 select {
