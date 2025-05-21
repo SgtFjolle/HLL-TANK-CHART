@@ -150,23 +150,29 @@ mapSelect.addEventListener('change', () => {
     return;
   }
   const { allies, axis } = mapData[map];
+
   mapResult.innerHTML = `
-    On this map 
-    <button class="map-answer" data-cat="${allies.category}" data-var="${allies.variation}">
-      ${allies.variation}
-    </button>
-    is playing against 
-    <button class="map-answer" data-cat="${axis.category}" data-var="${axis.variation}">
-      ${axis.variation}
-    </button>.
+    <p>This map is played by:</p>
+    <div class="map-line">
+      <span>ALLIES:</span>
+      <button class="map-answer" data-cat="${allies.category}" data-var="${allies.variation}">
+        ${allies.variation}
+      </button>
+    </div>
+    <div class="map-line">
+      <span>AXIS:</span>
+      <button class="map-answer" data-cat="${axis.category}" data-var="${axis.variation}">
+        ${axis.variation}
+      </button>
+    </div>
   `;
+
   document.querySelectorAll('.map-answer').forEach(btn => {
     btn.addEventListener('click', () => {
       categorySelect.value = btn.dataset.cat;
       updateVariations();
       setTimeout(() => {
-        document.querySelectorAll('#variation-buttons button')
-                .forEach(vb => {
+        document.querySelectorAll('#variation-buttons button').forEach(vb => {
           if (vb.textContent === btn.dataset.var) vb.click();
         });
       }, 0);
