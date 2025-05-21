@@ -171,6 +171,7 @@ select {
   width: 90vw;
   height: 100vh;
   padding: 10px;
+  align-items: center;
 }
 .fullscreen-mode .unified-controls {
   flex-direction: row;
