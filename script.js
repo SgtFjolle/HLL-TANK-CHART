@@ -3,7 +3,9 @@ const variationButtons = document.getElementById('variation-buttons');
 const armyImage = document.getElementById('army-image');
 const modeToggle = document.getElementById('mode-toggle');
 const fullscreenToggle = document.getElementById('fullscreen-toggle');
-const imageContainer = document.getElementById('image-container');
+const overlay = document.getElementById('fullscreen-overlay');
+const overlayCategory = document.getElementById('overlay-category');
+const overlayButtons = document.getElementById('overlay-variation-buttons');
 
 const imageMap = {
   german: {
@@ -24,31 +26,46 @@ const imageMap = {
   }
 };
 
-function updateVariations() {
-  const category = categorySelect.value;
-  variationButtons.innerHTML = "";
+let currentCategory = 'german';
+let currentVariation = '';
 
-  if (!imageMap[category]) return;
+function updateVariations(isOverlay = false) {
+  const category = isOverlay ? overlayCategory.value : categorySelect.value;
+  currentCategory = category;
 
-  Object.keys(imageMap[category]).forEach((variation, index) => {
+  const target = isOverlay ? overlayButtons : variationButtons;
+  target.innerHTML = "";
+
+  const variations = imageMap[category];
+  if (!variations) return;
+
+  Object.keys(variations).forEach((variation, index) => {
     const button = document.createElement("button");
     button.textContent = variation;
     button.onclick = () => {
       showImage(category, variation);
-      document.querySelectorAll('#variation-buttons button').forEach(btn => btn.classList.remove('active'));
+      currentVariation = variation;
+      target.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
     };
-    variationButtons.appendChild(button);
+    target.appendChild(button);
 
-    if (index === 0) {
+    if (index === 0 && !currentVariation) {
       button.click();
     }
   });
+
+  if (!isOverlay) {
+    overlayCategory.value = category;
+    updateVariations(true); // Update overlay buttons
+  }
 }
 
 function showImage(category, variation) {
   armyImage.src = imageMap[category][variation];
   armyImage.alt = variation;
+  currentCategory = category;
+  currentVariation = variation;
 }
 
 function toggleMode() {
@@ -56,29 +73,21 @@ function toggleMode() {
   modeToggle.textContent = isLight ? '☀️' : '🌙';
 }
 
-// Fullscreen Toggle
 fullscreenToggle.onclick = () => {
-  if (!document.fullscreenElement) {
-    imageContainer.requestFullscreen().catch(err => {
-      alert(`Error attempting to enter fullscreen: ${err.message}`);
-    });
-    fullscreenToggle.classList.add("active");
-  } else {
-    document.exitFullscreen();
-    fullscreenToggle.classList.remove("active");
-  }
-};
+  const isFullscreen = document.body.classList.toggle('fullscreen-mode');
+  fullscreenToggle.classList.toggle('active', isFullscreen);
+  overlay.classList.toggle('hidden', !isFullscreen);
 
-document.addEventListener("fullscreenchange", () => {
-  if (!document.fullscreenElement) {
-    fullscreenToggle.classList.remove("active");
-  }
-});
+  // Sync overlay UI
+  overlayCategory.value = currentCategory;
+  updateVariations(true);
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   categorySelect.value = 'german';
   updateVariations();
 });
+
 
 
 
