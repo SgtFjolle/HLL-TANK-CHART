@@ -1,4 +1,4 @@
-/* Base styling */
+/* Base styling (unchanged) */
 body {
   margin: 0;
   font-family: 'Merriweather', serif;
@@ -14,20 +14,20 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow: visible; /* allow map to hang off the side */
 }
 
+/* Header & controls (unchanged) */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 h1 {
   font-size: 2em;
   margin: 0;
   color: #FFF5D8;
 }
-
 #mode-toggle {
   font-size: 1.2em;
   background: none;
@@ -36,7 +36,6 @@ h1 {
   cursor: pointer;
 }
 
-/* Unified controls */
 .section.unified-controls {
   background-color: #2a2a2a;
   border-radius: 6px;
@@ -46,13 +45,11 @@ h1 {
   flex-direction: column;
   gap: 15px;
 }
-
-.faction-select-group {
+.faction-select-group, .variation-select-group {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .variation-row {
   display: flex;
   justify-content: space-between;
@@ -60,13 +57,6 @@ h1 {
   flex-wrap: wrap;
   gap: 10px;
 }
-
-.variation-select-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 select {
   padding: 8px;
   font-size: 1em;
@@ -74,15 +64,12 @@ select {
   color: #fff5d8;
   border: 1px solid #555;
   border-radius: 4px;
-  appearance: none;
 }
-
 #variation-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
-
 #variation-buttons button,
 #fullscreen-toggle {
   padding: 10px 14px;
@@ -92,21 +79,17 @@ select {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-  font-family: 'Merriweather', serif;
   font-size: 14px;
 }
-
 #variation-buttons button:hover,
 #fullscreen-toggle:hover {
   background-color: #505050;
 }
-
 #variation-buttons button.active,
 #fullscreen-toggle.active {
   background-color: #777;
   transform: scale(0.98);
 }
-
 .fullscreen-right {
   display: flex;
   justify-content: flex-end;
@@ -116,38 +99,36 @@ select {
 /* Main content: map-selector + image */
 .main-content {
   display: flex;
+  flex-direction: column;
   gap: 20px;
-  flex-wrap: wrap;
 }
 
-/* Map selector panel */
+/* Map selector panel (standard mobile & within flow) */
 .map-selector {
-  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  padding: 15px;
 }
-
 .map-selector p {
   margin: 0;
-  font-weight: normal; /* remove bold */
+  font-weight: normal;
 }
-
 .map-selector label {
   font-weight: normal;
 }
-
 .map-result {
   margin-top: 10px;
 }
-
 .map-line {
   display: flex;
   align-items: center;
   gap: 10px;
   margin: 6px 0;
 }
-
 .map-answer {
   background-color: #444;
   color: #fff5d8;
@@ -157,19 +138,12 @@ select {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 .map-answer:hover {
   background-color: #666;
 }
 
-/* Hide map-selector in fullscreen */
-.fullscreen-mode .map-selector {
-  display: none;
-}
-
-/* Image container */
+/* Image container (unchanged) */
 #image-container {
-  flex: 3;
   text-align: center;
   margin-top: 0;
   border: 2px solid #444;
@@ -178,7 +152,6 @@ select {
   border-radius: 8px;
   transition: all 0.4s ease;
 }
-
 #army-image {
   max-width: 100%;
   max-height: 75vh;
@@ -187,14 +160,18 @@ select {
   transition: all 0.4s ease;
 }
 
-/* Fullscreen mode */
+/* Hide map-selector in fullscreen */
+.fullscreen-mode .map-selector {
+  display: none;
+}
+
+/* Fullscreen mode (unchanged) */
 .fullscreen-mode .container {
   max-width: 90vw;
   width: 90vw;
   height: 100vh;
   padding: 10px;
 }
-
 .fullscreen-mode .unified-controls {
   flex-direction: row;
   justify-content: space-between;
@@ -204,65 +181,46 @@ select {
   padding: 0;
   gap: 20px;
 }
-
 .fullscreen-mode .faction-select-group {
   flex: 1;
-  min-width: 150px;
 }
-
 .fullscreen-mode .variation-row {
   flex: 2;
   justify-content: center;
 }
-
 .fullscreen-mode .variation-select-group {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  text-align: center;
 }
-
 .fullscreen-mode .fullscreen-right {
   flex: 1;
   justify-content: flex-end;
-  min-width: 150px;
-  display: flex;
-  align-items: center;
 }
-
 .fullscreen-mode #image-container {
   flex: 1;
-  width: 100%;
-  background: #000;
-  border: none;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #000;
+  border: none;
 }
-
 .fullscreen-mode #army-image {
   max-width: 95%;
   max-height: 85vh;
 }
 
-/* Light mode overrides */
+/* Light mode overrides (unchanged) */
 body.light-mode {
   background-color: #f2f2f2;
   color: #111;
 }
-
 body.light-mode h1 {
   color: #000;
 }
-
 body.light-mode .section.unified-controls,
 body.light-mode .map-selector {
   background-color: #fff;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
-
 body.light-mode select,
 body.light-mode button,
 body.light-mode .map-answer {
@@ -270,12 +228,10 @@ body.light-mode .map-answer {
   color: #000;
   border: 1px solid #aaa;
 }
-
 body.light-mode button:hover,
 body.light-mode .map-answer:hover {
   background-color: #bbb;
 }
-
 body.light-mode button.active,
 body.light-mode .map-answer.active {
   background-color: #aaa;
@@ -284,20 +240,25 @@ body.light-mode .map-answer.active {
 /* —— DESKTOP-ONLY LAYOUT TWEAK —— */
 @media (min-width: 768px) {
   .main-content {
+    /* make room for the absolutely positioned map */
     display: flex;
     align-items: flex-start;
-    gap: 20px; /* matches your existing vertical gap */
+    gap: 20px;
     flex-wrap: nowrap;
+    position: relative; /* containing block for absolute child */
   }
 
   .map-selector {
-    /* keep its current size, do not grow or shrink */
-    flex: 0 0 auto;
+    /* take it out of the normal flow */
+    position: absolute;
+    top: 0; /* align with top of image-container */
+    left: calc(50% - 450px - 220px - 20px);
+    width: 220px;
+    /* no transform needed */
   }
 
   #image-container {
-    /* fill remaining space so it scales to match header width */
-    flex: 1 1 auto;
+    flex: 1 1 auto; /* fill the rest, scaling to 900px width */
   }
 }
 
