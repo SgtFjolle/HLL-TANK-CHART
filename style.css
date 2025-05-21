@@ -171,7 +171,6 @@ select {
   width: 90vw;
   height: 100vh;
   padding: 10px;
-  align-items: center;
 }
 .fullscreen-mode .unified-controls {
   flex-direction: row;
@@ -205,6 +204,8 @@ select {
   border: none;
 }
 .fullscreen-mode #army-image {
+  display: block;
+  margin: 0 auto;
   max-width: 95%;
   max-height: 85vh;
 }
