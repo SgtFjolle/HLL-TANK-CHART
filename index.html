@@ -12,6 +12,7 @@
       <button id="mode-toggle" onclick="toggleMode()">🌙</button>
     </div>
 
+    <!-- Unified controls -->
     <div class="section unified-controls">
       <div class="faction-select-group">
         <label for="category-select">Select Faction:</label>
@@ -22,7 +23,6 @@
           <option value="british">ALLIES - Britain</option>
         </select>
       </div>
-
       <div class="variation-row">
         <div class="variation-select-group">
           <label>Select Variation:</label>
@@ -34,11 +34,42 @@
       </div>
     </div>
 
-    <div id="image-container">
-      <img id="army-image" src="" alt="Army Display" />
-    </div>
+    <!-- Main content: map selector + image -->
+    <div class="main-content">
+      <div class="section map-selector">
+        <p>Don’t know which faction/variation to pick?</p>
+        <label for="map-select">Select map:</label>
+        <select id="map-select">
+          <option value="">— Choose a map —</option>
+          <option>Carentan</option>
+          <option>Driel</option>
+          <option>El Alamein</option>
+          <option>Elsenborn Ridge</option>
+          <option>Foy</option>
+          <option>Hill 400</option>
+          <option>Hürtgen Forest</option>
+          <option>Kharkov</option>
+          <option>Kursk</option>
+          <option>Mortain</option>
+          <option>Omaha Beach</option>
+          <option>Purple Heart Lane</option>
+          <option>Remagen</option>
+          <option>Sainte-Marie-du-Mont</option>
+          <option>Sainte-Mère-Église</option>
+          <option>Stalingrad</option>
+          <option>Tobruk</option>
+          <option>Utah Beach</option>
+        </select>
+        <div id="map-result" class="map-result"></div>
+      </div>
 
-    <script src="script.js"></script>
+      <div id="image-container">
+        <img id="army-image" src="" alt="Army Display" />
+      </div>
+    </div>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
