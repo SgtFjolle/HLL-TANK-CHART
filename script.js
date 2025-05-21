@@ -1,81 +1,83 @@
 const categorySelect = document.getElementById('category-select');
 const variationButtons = document.getElementById('variation-buttons');
 const armyImage = document.getElementById('army-image');
+const modeToggle = document.getElementById('mode-toggle');
+const body = document.body;
 
 const imageMap = {
-    axis: {
-        "German Army": "german.jpg",
-        "German Army Winter Camo": "german_winter.jpg",
-        "German Africa Corps": "german_africa.jpg"
-    },
-    allies: {
-        "United States Army": "us.jpg",
-        "United States Army Winter Camo": "us_winter.jpg",
-        "Soviet Armed Forces": "soviet.jpg",
-        "British Army": "british.jpg",
-        "British Eighth Army": "british_eighth.jpg"
-    }
-};
-
-const variationIcons = {
-    "German Army Winter Camo": "snowflake.svg",
-    "German Africa Corps": "desert.svg",
-    "United States Army Winter Camo": "snowflake.svg",
-    "British Eighth Army": "desert.svg"
+  german: {
+    "German Army": { file: "german.jpg", icon: "helmet.svg" },
+    "German Army Winter Camo": { file: "german_winter.jpg", icon: "snowflake.svg" },
+    "German Africa Corps": { file: "german_africa.jpg", icon: "pyramids.svg" }
+  },
+  us: {
+    "United States Army": { file: "us.jpg", icon: "helmet.svg" },
+    "United States Army Winter Camo": { file: "us_winter.jpg", icon: "snowflake.svg" }
+  },
+  soviet: {
+    "Soviet Armed Forces": { file: "soviet.jpg", icon: "star.svg" }
+  },
+  british: {
+    "British Army": { file: "british.jpg", icon: "helmet.svg" },
+    "British Eighth Army": { file: "british_eighth.jpg", icon: "pyramids.svg" }
+  }
 };
 
 function updateVariations() {
-    const selected = categorySelect.value;
-    variationButtons.innerHTML = "";
+  const category = categorySelect.value;
+  variationButtons.innerHTML = "";
 
-    const categoryMap = selected === "axis" ? imageMap.axis : imageMap.allies;
-    const addedVariations = new Set();
+  if (!imageMap[category]) return;
 
-    for (const [variation, file] of Object.entries(categoryMap)) {
-        if (addedVariations.has(variation)) continue;
+  Object.entries(imageMap[category]).forEach(([variation, data], index) => {
+    const button = document.createElement("button");
+    const icon = document.createElement("img");
+    icon.src = data.icon;
+    icon.alt = "";
+    icon.width = 20;
+    icon.height = 20;
 
-        const button = document.createElement("button");
-        button.className = "variation-button";
-        button.onclick = () => showImage(selected, variation, button);
+    button.appendChild(icon);
+    button.appendChild(document.createTextNode(variation));
 
-        if (variationIcons[variation]) {
-            const icon = document.createElement("img");
-            icon.src = variationIcons[variation];
-            icon.alt = "icon";
-            icon.className = "variation-icon";
-            button.appendChild(icon);
-        }
+    button.onclick = () => {
+      showImage(category, variation);
+      setActiveButton(button);
+    };
 
-        const label = document.createElement("span");
-        label.textContent = variation;
-        button.appendChild(label);
-        variationButtons.appendChild(button);
+    variationButtons.appendChild(button);
 
-        addedVariations.add(variation);
+    if (index === 0) {
+      button.click();
     }
-
-    // Auto-select first variation
-    const firstButton = variationButtons.querySelector("button");
-    if (firstButton) {
-        firstButton.click();
-    }
+  });
 }
 
-function showImage(categoryGroup, variation, clickedButton) {
-    const file = imageMap[categoryGroup][variation];
-    if (!file) return;
-
-    armyImage.src = file;
+function showImage(category, variation) {
+  const data = imageMap[category][variation];
+  armyImage.style.opacity = 0;
+  setTimeout(() => {
+    armyImage.src = data.file;
     armyImage.alt = variation;
-
-    // Highlight the active button
-    document.querySelectorAll('.variation-button').forEach(btn => btn.classList.remove('active'));
-    if (clickedButton) clickedButton.classList.add('active');
+    armyImage.style.opacity = 1;
+  }, 200);
 }
 
-window.onload = () => {
-    categorySelect.value = 'axis';
-    updateVariations();
+function setActiveButton(activeBtn) {
+  document.querySelectorAll("#variation-buttons button").forEach(btn => {
+    btn.classList.remove("active");
+  });
+  activeBtn.classList.add("active");
+}
+
+// Light/Dark Mode Toggle
+modeToggle.onclick = () => {
+  body.classList.toggle("light-mode");
 };
 
+// Auto-load AXIS – Germany on page load
+window.onload = () => {
+  categorySelect.value = "german";
+  updateVariations();
+};
 
