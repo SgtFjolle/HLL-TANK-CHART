@@ -181,6 +181,9 @@ select {
   padding: 0;
   gap: 20px;
 }
+.fullscreen-mode .main-content {
+  justify-content: center;
+}
 .fullscreen-mode .faction-select-group {
   flex: 1;
 }
