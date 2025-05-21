@@ -153,12 +153,16 @@ select {
   min-width: 150px;
 }
 
-.fullscreen-mode .variation-select-group {
+.fullscreen-mode .variation-row {
   flex: 2;
+  justify-content: center;
+}
+
+.fullscreen-mode .variation-select-group {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   text-align: center;
 }
 
