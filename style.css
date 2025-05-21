@@ -59,14 +59,6 @@ select {
   border-radius: 4px;
 }
 
-.variation-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px;
-  justify-content: space-between;
-}
-
 #variation-buttons {
   display: flex;
   flex-wrap: wrap;
@@ -101,6 +93,20 @@ select {
   margin-left: auto;
 }
 
+.controls-combined {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.faction-select-group,
+.variation-select-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 #image-container {
   text-align: center;
   margin-top: 10px;
@@ -121,8 +127,8 @@ select {
 
 /* Fullscreen mode */
 .fullscreen-mode .container {
-  max-width: none;
-  width: 100vw;
+  max-width: 90vw;
+  width: 90vw;
   height: 100vh;
   padding: 10px;
   justify-content: flex-start;
