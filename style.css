@@ -58,8 +58,8 @@ select {
   gap: 10px;
 }
 
-#variation-buttons button {
-  margin: 4px 4px 0 0;
+#variation-buttons button,
+#fullscreen-toggle {
   padding: 10px 14px;
   background-color: #3a3a3a;
   border: 1px solid #666;
@@ -67,13 +67,17 @@ select {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
+  font-family: 'Merriweather', serif;
+  font-size: 14px;
 }
 
-#variation-buttons button:hover {
+#variation-buttons button:hover,
+#fullscreen-toggle:hover {
   background-color: #505050;
 }
 
-#variation-buttons button.active {
+#variation-buttons button.active,
+#fullscreen-toggle.active {
   background-color: #777;
   transform: scale(0.98);
 }
@@ -91,37 +95,67 @@ select {
   max-width: 100%;
   height: auto;
   border-radius: 4px;
+  transition: transform 0.3s ease;
 }
 
-/* Fullscreen Toggle Button */
-#fullscreen-wrapper {
-  text-align: center;
-  margin-top: 20px;
+/* Fullscreen mode */
+.fullscreen-mode body {
+  overflow: hidden;
 }
 
-#fullscreen-toggle {
-  font-family: 'Merriweather', serif;
+.fullscreen-mode #main-container {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-color: #000;
+  padding: 0;
+  margin: 0;
+}
+
+.fullscreen-mode #image-container {
+  margin: 0;
+  border: none;
+  background: #000;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullscreen-mode #army-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Overlay controls */
+#fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(20, 20, 20, 0.85);
+  padding: 10px 20px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#fullscreen-overlay select,
+#overlay-variation-buttons button {
   font-size: 14px;
-  padding: 10px 16px;
+  padding: 8px 10px;
   background-color: #444;
+  border: 1px solid #666;
   color: #fff;
-  border: 1px solid #777;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  border-radius: 4px;
+  margin-right: 8px;
 }
 
-#fullscreen-toggle:hover {
-  background-color: #666;
+.hidden {
+  display: none;
 }
 
-#fullscreen-toggle.active {
-  background-color: #888;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
-  transform: translateY(1px);
-}
-
-/* Light mode */
 body.light-mode {
   background-color: #f2f2f2;
   color: #111;
@@ -138,20 +172,25 @@ body.light-mode .section {
 
 body.light-mode select,
 body.light-mode #variation-buttons button,
-body.light-mode #fullscreen-toggle {
+body.light-mode #fullscreen-toggle,
+body.light-mode #fullscreen-overlay select,
+body.light-mode #overlay-variation-buttons button {
   background-color: #ddd;
   color: #000;
   border: 1px solid #aaa;
 }
 
 body.light-mode #variation-buttons button:hover,
-body.light-mode #fullscreen-toggle:hover {
-  background-color: #ccc;
+body.light-mode #fullscreen-toggle:hover,
+body.light-mode #overlay-variation-buttons button:hover {
+  background-color: #bbb;
 }
 
 body.light-mode #variation-buttons button.active,
-body.light-mode #fullscreen-toggle.active {
-  background-color: #bbb;
+body.light-mode #fullscreen-toggle.active,
+body.light-mode #overlay-variation-buttons button.active {
+  background-color: #aaa;
 }
+
 
 
