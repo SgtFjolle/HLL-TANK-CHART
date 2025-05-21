@@ -12,22 +12,24 @@
       <button id="mode-toggle" onclick="toggleMode()">🌙</button>
     </div>
 
-    <div class="section" id="faction-section">
-      <label for="category-select">Select Faction:</label>
-      <select id="category-select" onchange="updateVariations()">
-        <option value="german">AXIS - Germany</option>
-        <option value="us">ALLIES - United States</option>
-        <option value="soviet">ALLIES - Soviet Union</option>
-        <option value="british">ALLIES - Britain</option>
-      </select>
-    </div>
+    <div class="controls-bar">
+      <div class="section" id="faction-section">
+        <label for="category-select">Select Faction:</label>
+        <select id="category-select" onchange="updateVariations()">
+          <option value="german">AXIS - Germany</option>
+          <option value="us">ALLIES - United States</option>
+          <option value="soviet">ALLIES - Soviet Union</option>
+          <option value="british">ALLIES - Britain</option>
+        </select>
+      </div>
 
-    <div class="section" id="variation-section">
-      <div class="variation-row">
-        <label>Select Variation:</label>
-        <div id="variation-buttons"></div>
-        <div class="fullscreen-right">
-          <button id="fullscreen-toggle">Toggle Fullscreen</button>
+      <div class="section" id="variation-section">
+        <div class="variation-row">
+          <label>Select Variation:</label>
+          <div id="variation-buttons"></div>
+          <div class="fullscreen-right">
+            <button id="fullscreen-toggle">Toggle Fullscreen</button>
+          </div>
         </div>
       </div>
     </div>
