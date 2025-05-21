@@ -82,24 +82,24 @@ const mapData = {
     axis:   { category: 'german', variation: 'German Africa Corps' }
   },
   "Elsenborn Ridge": {
-    allies: { category: 'us', variation: 'United States Army Winter Version' },
-    axis:   { category: 'german', variation: 'German Army Winter Version' }
+    allies: { category: 'us', variation: 'United States Army Winter Camo' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Foy": {
-    allies: { category: 'us', variation: 'United States Army Winter Version' },
-    axis:   { category: 'german', variation: 'German Army Winter Version' }
+    allies: { category: 'us', variation: 'United States Army Winter Camo' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Hill 400": {
-    allies: { category: 'us', variation: 'United States Army Winter Version' },
-    axis:   { category: 'german', variation: 'German Army Winter Version' }
+    allies: { category: 'us', variation: 'United States Army Winter Camo' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Hürtgen Forest": {
-    allies: { category: 'us', variation: 'United States Army Winter Version' },
-    axis:   { category: 'german', variation: 'German Army Winter Version' }
+    allies: { category: 'us', variation: 'United States Army Winter Camo' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Kharkov": {
-    allies: { category: 'soviet', variation: 'Soviet Winter Version' },
-    axis:   { category: 'german', variation: 'German Army Winter Version' }
+    allies: { category: 'soviet', variation: 'Soviet' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Kursk": {
     allies: { category: 'soviet', variation: 'Soviet' },
@@ -130,8 +130,8 @@ const mapData = {
     axis:   { category: 'german', variation: 'German Army' }
   },
   "Stalingrad": {
-    allies: { category: 'soviet', variation: 'Soviet Winter Version' },
-    axis:   { category: 'german', variation: 'German Army Winter Version' }
+    allies: { category: 'soviet', variation: 'Soviet Winter Camo' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Tobruk": {
     allies: { category: 'british', variation: 'British Eighth Army' },
