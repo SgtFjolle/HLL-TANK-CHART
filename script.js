@@ -1,9 +1,11 @@
+// Main controls
 const categorySelect = document.getElementById('category-select');
 const variationButtons = document.getElementById('variation-buttons');
 const armyImage = document.getElementById('army-image');
 const modeToggle = document.getElementById('mode-toggle');
 const fullscreenToggle = document.getElementById('fullscreen-toggle');
 
+// Image map data
 const imageMap = {
   german: {
     "German Army": "german.jpg",
@@ -32,29 +34,24 @@ function updateVariations() {
   const variations = imageMap[category];
 
   variationButtons.innerHTML = "";
-
   Object.keys(variations).forEach((variation, index) => {
-    const button = document.createElement("button");
-    button.textContent = variation;
-    button.onclick = () => {
+    const btn = document.createElement('button');
+    btn.textContent = variation;
+    btn.onclick = () => {
       showImage(category, variation);
       currentVariation = variation;
-      variationButtons.querySelectorAll('button').forEach(btn => btn.classList.remove('active'));
-      button.classList.add('active');
+      document.querySelectorAll('#variation-buttons button')
+              .forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
     };
-    variationButtons.appendChild(button);
-
-    if (index === 0) {
-      button.click();
-    }
+    variationButtons.appendChild(btn);
+    if (index === 0) btn.click();
   });
 }
 
 function showImage(category, variation) {
   armyImage.src = imageMap[category][variation];
   armyImage.alt = variation;
-  currentCategory = category;
-  currentVariation = variation;
 }
 
 function toggleMode() {
@@ -63,11 +60,121 @@ function toggleMode() {
 }
 
 fullscreenToggle.onclick = () => {
-  const isFullscreen = document.body.classList.toggle('fullscreen-mode');
-  fullscreenToggle.classList.toggle('active', isFullscreen);
+  const isFs = document.body.classList.toggle('fullscreen-mode');
+  fullscreenToggle.classList.toggle('active', isFs);
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+// Map-selector feature
+const mapSelect = document.getElementById('map-select');
+const mapResult = document.getElementById('map-result');
+
+const mapData = {
+  "Carentan": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Driel": {
+    allies: { category: 'british', variation: 'British Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "El Alamein": {
+    allies: { category: 'british', variation: 'British Eighth Army' },
+    axis:   { category: 'german', variation: 'German Africa Corps' }
+  },
+  "Elsenborn Ridge": {
+    allies: { category: 'us', variation: 'United States Army Winter Version' },
+    axis:   { category: 'german', variation: 'German Army Winter Version' }
+  },
+  "Foy": {
+    allies: { category: 'us', variation: 'United States Army Winter Version' },
+    axis:   { category: 'german', variation: 'German Army Winter Version' }
+  },
+  "Hill 400": {
+    allies: { category: 'us', variation: 'United States Army Winter Version' },
+    axis:   { category: 'german', variation: 'German Army Winter Version' }
+  },
+  "Hürtgen Forest": {
+    allies: { category: 'us', variation: 'United States Army Winter Version' },
+    axis:   { category: 'german', variation: 'German Army Winter Version' }
+  },
+  "Kharkov": {
+    allies: { category: 'soviet', variation: 'Soviet Winter Version' },
+    axis:   { category: 'german', variation: 'German Army Winter Version' }
+  },
+  "Kursk": {
+    allies: { category: 'soviet', variation: 'Soviet' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Mortain": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Omaha Beach": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Purple Heart Lane": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Remagen": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Sainte-Marie-du-Mont": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Sainte-Mère-Église": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Stalingrad": {
+    allies: { category: 'soviet', variation: 'Soviet Winter Version' },
+    axis:   { category: 'german', variation: 'German Army Winter Version' }
+  },
+  "Tobruk": {
+    allies: { category: 'british', variation: 'British Eighth Army' },
+    axis:   { category: 'german', variation: 'German Africa Corps' }
+  },
+  "Utah Beach": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  }
+};
+
+mapSelect.addEventListener('change', () => {
+  const map = mapSelect.value;
+  if (!mapData[map]) {
+    mapResult.innerHTML = '';
+    return;
+  }
+  const { allies, axis } = mapData[map];
+  mapResult.innerHTML = `
+    On this map 
+    <button class="map-answer" data-cat="${allies.category}" data-var="${allies.variation}">
+      ${allies.variation}
+    </button>
+    is playing against 
+    <button class="map-answer" data-cat="${axis.category}" data-var="${axis.variation}">
+      ${axis.variation}
+    </button>.
+  `;
+  document.querySelectorAll('.map-answer').forEach(btn => {
+    btn.addEventListener('click', () => {
+      categorySelect.value = btn.dataset.cat;
+      updateVariations();
+      setTimeout(() => {
+        document.querySelectorAll('#variation-buttons button')
+                .forEach(vb => {
+          if (vb.textContent === btn.dataset.var) vb.click();
+        });
+      }, 0);
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
   categorySelect.value = 'german';
   updateVariations();
 });
