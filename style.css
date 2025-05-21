@@ -1,3 +1,4 @@
+/* Base styling (unchanged) */
 body {
   margin: 0;
   font-family: 'Merriweather', serif;
@@ -5,7 +6,6 @@ body {
   color: #fff5d8;
   transition: background-color 0.4s, color 0.4s;
 }
-
 .container {
   max-width: 900px;
   margin: 0 auto;
@@ -14,57 +14,16 @@ body {
   flex-direction: column;
   gap: 20px;
 }
+.header { display: flex; justify-content: space-between; align-items: center; }
+h1 { font-size: 2em; margin: 0; color: #FFF5D8; }
+#mode-toggle { font-size: 1.2em; background: none; border: none; color: inherit; cursor: pointer; }
+.section { padding: 15px; background-color: #2a2a2a; border-radius: 6px; box-shadow: 0 0 10px rgba(0,0,0,0.4); transition: all 0.4s ease; }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-h1 {
-  font-size: 2em;
-  margin: 0;
-  color: #FFF5D8;
-}
-
-#mode-toggle {
-  font-size: 1.2em;
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-}
-
-.section.unified-controls {
-  background-color: #2a2a2a;
-  border-radius: 6px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.faction-select-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.variation-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.variation-select-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
+/* Unified controls (unchanged) */
+.section.unified-controls { display: flex; flex-direction: column; gap: 15px; }
+.faction-select-group { display: flex; align-items: center; gap: 10px; }
+.variation-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.variation-select-group { display: flex; align-items: center; gap: 10px; }
 select {
   padding: 8px;
   font-size: 1em;
@@ -74,13 +33,11 @@ select {
   border-radius: 4px;
   appearance: none;
 }
-
 #variation-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
-
 #variation-buttons button,
 #fullscreen-toggle {
   padding: 10px 14px;
@@ -93,35 +50,56 @@ select {
   font-family: 'Merriweather', serif;
   font-size: 14px;
 }
-
 #variation-buttons button:hover,
-#fullscreen-toggle:hover {
-  background-color: #505050;
-}
-
+#fullscreen-toggle:hover { background-color: #505050; }
 #variation-buttons button.active,
-#fullscreen-toggle.active {
-  background-color: #777;
-  transform: scale(0.98);
-}
+#fullscreen-toggle.active { background-color: #777; transform: scale(0.98); }
+.fullscreen-right { display: flex; justify-content: flex-end; flex: 1; }
 
-.fullscreen-right {
+/* Main content: map-selector + image */
+.main-content {
   display: flex;
-  justify-content: flex-end;
+  gap: 20px;
+}
+.map-selector {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.map-selector p {
+  margin: 0 0 8px 0;
+  font-weight: bold;
+}
+.map-result {
+  margin-top: 10px;
+  font-size: 0.95em;
+}
+.map-result .map-answer {
+  background-color: #444;
+  color: #fff5d8;
+  border: none;
+  padding: 6px 10px;
+  margin: 0 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.map-result .map-answer:hover {
+  background-color: #666;
 }
 
-/* Image Container */
+/* Image container (unchanged) */
 #image-container {
+  flex: 3;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 0;
   border: 2px solid #444;
   padding: 15px;
   background-color: #111;
   border-radius: 8px;
   transition: all 0.4s ease;
 }
-
 #army-image {
   max-width: 100%;
   max-height: 75vh;
@@ -129,17 +107,20 @@ select {
   border-radius: 4px;
 }
 
-/* --- FULLSCREEN MODE --- */
+/* Hide map-selector in fullscreen */
+.fullscreen-mode .map-selector {
+  display: none;
+}
+
+/* --- Fullscreen mode (unchanged) --- */
 .fullscreen-mode .container {
   max-width: 90vw;
   width: 90vw;
   height: 100vh;
   padding: 10px;
 }
-
 .fullscreen-mode .unified-controls {
   flex-direction: row;
-  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   background: none;
@@ -147,17 +128,8 @@ select {
   padding: 0;
   gap: 20px;
 }
-
-.fullscreen-mode .faction-select-group {
-  flex: 1;
-  min-width: 150px;
-}
-
-.fullscreen-mode .variation-row {
-  flex: 2;
-  justify-content: center;
-}
-
+.fullscreen-mode .faction-select-group { flex: 1; min-width: 150px; }
+.fullscreen-mode .variation-row { flex: 2; justify-content: center; }
 .fullscreen-mode .variation-select-group {
   display: flex;
   justify-content: center;
@@ -165,15 +137,7 @@ select {
   flex-wrap: wrap;
   text-align: center;
 }
-
-.fullscreen-mode .fullscreen-right {
-  flex: 1;
-  justify-content: flex-end;
-  min-width: 150px;
-  display: flex;
-  align-items: center;
-}
-
+.fullscreen-mode .fullscreen-right { flex: 1; justify-content: flex-end; min-width: 150px; }
 .fullscreen-mode #image-container {
   flex: 1;
   width: 100%;
@@ -184,39 +148,26 @@ select {
   justify-content: center;
   align-items: center;
 }
+.fullscreen-mode #army-image { max-width: 95%; max-height: 85vh; }
 
-.fullscreen-mode #army-image {
-  max-width: 95%;
-  max-height: 85vh;
-}
-
-/* --- LIGHT MODE --- */
-body.light-mode {
-  background-color: #f2f2f2;
-  color: #111;
-}
-
-body.light-mode h1 {
-  color: #000;
-}
-
-body.light-mode .unified-controls {
+/* Light mode overrides (unchanged) */
+body.light-mode { background-color: #f2f2f2; color: #111; }
+body.light-mode h1 { color: #000; }
+body.light-mode .section.unified-controls,
+body.light-mode .map-selector {
   background-color: #fff;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
-
 body.light-mode select,
-body.light-mode button {
+body.light-mode button,
+body.light-mode .map-answer {
   background-color: #ddd;
   color: #000;
   border: 1px solid #aaa;
 }
+body.light-mode button:hover,
+body.light-mode .map-answer:hover { background-color: #bbb; }
+body.light-mode button.active,
+body.light-mode .map-answer.active { background-color: #aaa; }
 
-body.light-mode button:hover {
-  background-color: #bbb;
-}
-
-body.light-mode button.active {
-  background-color: #aaa;
-}
 
