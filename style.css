@@ -152,6 +152,14 @@ select {
   width: 100%;
 }
 
+.fullscreen-mode .control-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .fullscreen-mode .faction-select-group,
 .fullscreen-mode .variation-select-group,
 .fullscreen-mode .fullscreen-right {
@@ -165,10 +173,7 @@ select {
   flex: 1;
   flex-wrap: wrap;
   justify-content: flex-start;
-}
-
-.fullscreen-mode .control-row {
-  display: none;
+  margin-top: 0;
 }
 
 .fullscreen-mode #image-container {
@@ -216,3 +221,4 @@ body.light-mode button:hover {
 body.light-mode button.active {
   background-color: #aaa;
 }
+
