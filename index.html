@@ -26,7 +26,9 @@
       <div class="variation-row">
         <label>Select Variation:</label>
         <div id="variation-buttons"></div>
-        <button id="fullscreen-toggle">Toggle Fullscreen</button>
+        <div class="fullscreen-right">
+          <button id="fullscreen-toggle">Toggle Fullscreen</button>
+        </div>
       </div>
     </div>
 
@@ -35,7 +37,7 @@
     </div>
   </div>
 
-  <!-- Fullscreen overlay controls -->
+  <!-- Fullscreen overlay only visible in fullscreen -->
   <div id="fullscreen-overlay" class="hidden">
     <div class="overlay-controls">
       <select id="overlay-category" onchange="updateVariations(true)">
