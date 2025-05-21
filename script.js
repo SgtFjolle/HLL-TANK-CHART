@@ -1,27 +1,35 @@
-const categorySelect = document.getElementById('category-select');
-const variationButtons = document.getElementById('variation-buttons');
-const armyImage = document.getElementById('army-image');
-const modeToggle = document.getElementById('mode-toggle');
-const body = document.body;
+const categorySelect = document.getElementById("category-select");
+const variationButtons = document.getElementById("variation-buttons");
+const armyImage = document.getElementById("army-image");
 
 const imageMap = {
-    german: {
-        "German Army": { img: "german.jpg", icon: "🪖" },
-        "German Army Winter Camo": { img: "german_winter.jpg", icon: snowflakeIcon() },
-        "German Africa Corps": { img: "german_africa.jpg", icon: desertIcon() }
+    axis: {
+        "German Army": { file: "german.jpg", icon: "helmet.svg" },
+        "German Army Winter Camo": { file: "german_winter.jpg", icon: "snow.svg" },
+        "German Africa Corps": { file: "german_africa.jpg", icon: "desert.svg" }
     },
-    us: {
-        "United States Army": { img: "us.jpg", icon: "🪖" },
-        "United States Army Winter Camo": { img: "us_winter.jpg", icon: snowflakeIcon() }
+    allies_us: {
+        "United States Army": { file: "us.jpg", icon: "helmet.svg" },
+        "United States Army Winter Camo": { file: "us_winter.jpg", icon: "snow.svg" }
     },
-    soviet: {
-        "Soviet Armed Forces": { img: "soviet.jpg", icon: starIcon() }
+    allies_soviet: {
+        "Soviet Armed Forces": { file: "soviet.jpg", icon: "star.svg" }
     },
-    british: {
-        "British Army": { img: "british.jpg", icon: "🪖" },
-        "British Eighth Army": { img: "british_eighth.jpg", icon: desertIcon() }
+    allies_british: {
+        "British Army": { file: "british.jpg", icon: "helmet.svg" },
+        "British Eighth Army": { file: "british_eighth.jpg", icon: "desert.svg" }
     }
 };
+
+// Theme toggle
+function toggleTheme() {
+    const body = document.body;
+    body.classList.toggle("dark-mode");
+    body.classList.toggle("light-mode");
+
+    const icon = document.querySelector(".theme-toggle");
+    icon.textContent = body.classList.contains("dark-mode") ? "🌙" : "☀️";
+}
 
 function updateVariations() {
     const category = categorySelect.value;
@@ -29,67 +37,39 @@ function updateVariations() {
 
     if (!imageMap[category]) return;
 
-    Object.entries(imageMap[category]).forEach(([variation, data], index) => {
+    Object.keys(imageMap[category]).forEach((variationName, index) => {
+        const variation = imageMap[category][variationName];
         const button = document.createElement("button");
-        button.className = "variation-button";
-        button.innerHTML = `${data.icon} ${variation}`;
+        button.className = "variation-btn";
+        button.innerHTML = `<img src="${variation.icon}" alt="">${variationName}`;
         button.onclick = () => {
-            showImage(category, variation);
-            highlightActiveButton(button);
+            showImage(category, variationName);
+            document.querySelectorAll('.variation-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
         };
         variationButtons.appendChild(button);
 
-        // Auto-select first
         if (index === 0) {
-            showImage(category, variation);
-            highlightActiveButton(button);
+            showImage(category, variationName);
+            button.classList.add("active");
         }
     });
 }
 
-function showImage(category, variation) {
-    const data = imageMap[category][variation];
-    armyImage.src = data.img;
-    armyImage.alt = variation;
+function showImage(category, variationName) {
+    const imageInfo = imageMap[category][variationName];
+    armyImage.style.opacity = 0;
+    setTimeout(() => {
+        armyImage.src = imageInfo.file;
+        armyImage.alt = variationName;
+        armyImage.style.opacity = 1;
+    }, 200);
 }
 
-function highlightActiveButton(activeBtn) {
-    const buttons = document.querySelectorAll('.variation-button');
-    buttons.forEach(btn => btn.classList.remove('active'));
-    activeBtn.classList.add('active');
-}
-
-// Mode toggle
-modeToggle.onclick = () => {
-    body.classList.toggle('light-mode');
-};
-
-// On page load
+// Load initial category
 window.onload = function () {
-    categorySelect.value = 'german';
+    categorySelect.value = "axis";
     updateVariations();
 };
 
-// ICON DEFINITIONS
-function snowflakeIcon() {
-    return `
-    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 0v24M0 12h24M4.2 4.2l15.6 15.6M4.2 19.8L19.8 4.2" stroke="currentColor" stroke-width="2"/>
-    </svg>`;
-}
-
-function desertIcon() {
-    return `
-    <svg width="16" height="16" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 52L24 32L36 52H12Z" fill="#C2B280"/>
-        <path d="M32 52L44 32L56 52H32Z" fill="#C2B280"/>
-    </svg>`;
-}
-
-function starIcon() {
-    return `
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2l2.9 6.5L22 9.3l-5 4.9L18 22 12 18.2 6 22l1-7.8-5-4.9 7.1-0.8L12 2z"/>
-    </svg>`;
-}
 
