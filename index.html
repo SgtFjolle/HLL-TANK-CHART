@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Hell Let Loose Army Viewer</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>Tank Recognition Tool</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="helmet.svg" />
 </head>
 <body class="dark-mode">
-    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">🌙</div>
+  <div class="container">
+    <header>
+      <h1 id="headline">Tank Recognition Tool</h1>
+      <button id="mode-toggle" title="Toggle Light/Dark Mode"></button>
+    </header>
 
-    <div class="wrapper">
-        <h1 id="headline">Tank Recognition Tool</h1>
-
-        <div class="top-controls">
-            <div class="control-group">
-                <label for="category-select">Select Faction:</label>
-                <select id="category-select" onchange="updateVariations()">
-                    <option value="axis">AXIS - Germany</option>
-                    <option value="allies_us">ALLIES - US</option>
-                    <option value="allies_soviet">ALLIES - Soviet</option>
-                    <option value="allies_british">ALLIES - British</option>
-                </select>
-            </div>
-
-            <div class="control-group">
-                <label>Select Variation:</label>
-                <!-- Existing HTML remains the same above -->
-<div id="variation-buttons" class="variation-buttons"></div>
-<!-- Existing HTML remains the same below -->
-
-            </div>
-        </div>
-
-        <div class="image-container">
-            <img id="army-image" src="" alt="Army Visual" />
-        </div>
+    <div class="section" id="faction-section">
+      <label for="category-select">Select Faction:</label>
+      <select id="category-select" onchange="updateVariations()">
+        <option value="german">AXIS – Germany</option>
+        <option value="us">ALLIES – United States</option>
+        <option value="soviet">ALLIES – Soviet Union</option>
+        <option value="british">ALLIES – United Kingdom</option>
+      </select>
     </div>
 
-    <script src="script.js"></script>
+    <div class="section" id="variation-section">
+      <span>Select Variation:</span>
+      <div id="variation-buttons"></div>
+    </div>
+
+    <div id="image-container">
+      <img id="army-image" src="" alt="Loading image..." />
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
