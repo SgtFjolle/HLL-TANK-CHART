@@ -50,13 +50,25 @@ h1 {
   transition: all 0.4s ease;
 }
 
-select {
-  padding: 8px;
-  font-size: 1em;
-  background-color: #333;
-  color: #fff5d8;
-  border: 1px solid #555;
-  border-radius: 4px;
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.faction-select-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.variation-select-group {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 10px;
 }
 
 #variation-buttons {
@@ -93,20 +105,6 @@ select {
   margin-left: auto;
 }
 
-.controls-combined {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
-}
-
-.faction-select-group,
-.variation-select-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 #image-container {
   text-align: center;
   margin-top: 10px;
@@ -132,6 +130,19 @@ select {
   height: 100vh;
   padding: 10px;
   justify-content: flex-start;
+}
+
+.fullscreen-mode .controls-combined {
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.fullscreen-mode .variation-select-group {
+  margin-top: 0;
+  flex-direction: row;
+  align-items: center;
 }
 
 .fullscreen-mode #image-container {
@@ -179,6 +190,7 @@ body.light-mode button:hover {
 body.light-mode button.active {
   background-color: #aaa;
 }
+
 
 
 
