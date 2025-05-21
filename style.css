@@ -16,8 +16,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px; /* Moved up slightly by adding space below */
-    margin-top: 10px;     /* Extra space above */
+    margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 h1 {
@@ -32,6 +32,7 @@ h1 {
     border: none;
     color: inherit;
     cursor: pointer;
+    z-index: 10;
 }
 
 .section {
@@ -51,8 +52,15 @@ select {
     border-radius: 4px;
 }
 
+.variation-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
 #variation-buttons button {
-    margin: 6px;
+    margin: 4px 4px 0 0;
     padding: 10px 14px;
     background-color: #3a3a3a;
     border: 1px solid #666;
