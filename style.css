@@ -133,7 +133,7 @@ select {
   transition: all 0.4s ease;
 }
 
-/* Fullscreen mode layout */
+/* Fullscreen layout */
 .fullscreen-mode .container {
   max-width: 90vw;
   width: 90vw;
@@ -143,22 +143,32 @@ select {
 }
 
 .fullscreen-mode .controls-combined {
+  display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 20px;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.fullscreen-mode .faction-select-group,
+.fullscreen-mode .variation-select-group,
+.fullscreen-mode .fullscreen-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
 }
 
 .fullscreen-mode .variation-select-group {
-  margin-top: 0;
-  flex-direction: row;
-  align-items: center;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
 .fullscreen-mode .control-row {
-  flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
+  display: none;
 }
 
 .fullscreen-mode #image-container {
@@ -177,7 +187,7 @@ select {
   max-height: 85vh;
 }
 
-/* Light mode styling */
+/* Light mode */
 body.light-mode {
   background-color: #f2f2f2;
   color: #111;
@@ -206,10 +216,3 @@ body.light-mode button:hover {
 body.light-mode button.active {
   background-color: #aaa;
 }
-
-
-
-
-
-
-
