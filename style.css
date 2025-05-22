@@ -109,7 +109,7 @@ select {
   position: absolute; /* Keep it outside of the main content */
   left: 920px; /* Position it from the left*/
   top: 0; /* Position it at the top */
-  width: 340px; /* Set the desired width for the banner */
+  width: 425px; /* Set the desired width for the banner */
 }
 
 #banner-image {
