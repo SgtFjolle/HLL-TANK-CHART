@@ -116,11 +116,11 @@ const mapData = {
     axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Kharkov": {
-    allies: { category: 'soviet', variation: 'Soviet' },
+    allies: { category: 'soviet', variation: 'Soviet Armed Forces' },
     axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Kursk": {
-    allies: { category: 'soviet', variation: 'Soviet' },
+    allies: { category: 'soviet', variation: 'Soviet Armed Forces' },
     axis:   { category: 'german', variation: 'German Army' }
   },
   "Mortain": {
@@ -148,7 +148,7 @@ const mapData = {
     axis:   { category: 'german', variation: 'German Army' }
   },
   "Stalingrad": {
-    allies: { category: 'soviet', variation: 'Soviet' },
+    allies: { category: 'soviet', variation: 'Soviet Armed Forces' },
     axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Tobruk": {
