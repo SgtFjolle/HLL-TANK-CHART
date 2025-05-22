@@ -62,11 +62,6 @@ function toggleMode() {
 fullscreenToggle.onclick = () => {
   const isFs = document.body.classList.toggle('fullscreen-mode');
   fullscreenToggle.classList.toggle('active', isFs);
-  if (isFs) {
-    document.body.classList.add('fullscreen');
-  } else {
-    document.body.classList.remove('fullscreen');
-  }
 };
 
 // Map-selector feature
@@ -85,6 +80,66 @@ const mapData = {
   "El Alamein": {
     allies: { category: 'british', variation: 'British Eighth Army' },
     axis:   { category: 'german', variation: 'German Africa Corps' }
+  },
+  "Elsenborn Ridge": {
+    allies: { category: 'us', variation: 'United States Army Winter Camo' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
+  },
+  "Foy": {
+    allies: { category: 'us', variation: 'United States Army Winter Camo' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
+  },
+  "Hill 400": {
+    allies: { category: 'us', variation: 'United States Army Winter Camo' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
+  },
+  "Hürtgen Forest": {
+    allies: { category: 'us', variation: 'United States Army Winter Camo' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
+  },
+  "Kharkov": {
+    allies: { category: 'soviet', variation: 'Soviet' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
+  },
+  "Kursk": {
+    allies: { category: 'soviet', variation: 'Soviet' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Mortain": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Omaha Beach": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Purple Heart Lane": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Remagen": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Sainte-Marie-du-Mont": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Sainte-Mère-Église": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
+  },
+  "Stalingrad": {
+    allies: { category: 'soviet', variation: 'Soviet' },
+    axis:   { category: 'german', variation: 'German Army Winter Camo' }
+  },
+  "Tobruk": {
+    allies: { category: 'british', variation: 'British Eighth Army' },
+    axis:   { category: 'german', variation: 'German Africa Corps' }
+  },
+  "Utah Beach": {
+    allies: { category: 'us', variation: 'United States Army' },
+    axis:   { category: 'german', variation: 'German Army' }
   }
 };
 
@@ -96,7 +151,7 @@ mapSelect.addEventListener('change', () => {
   }
   const { allies, axis } = mapData[map];
 
-  mapResult.innerHTML = `
+  mapResult.innerHTML = 
     <p>This map is played by:</p>
     <div class="map-line">
       <span>ALLIES:</span>
@@ -110,7 +165,7 @@ mapSelect.addEventListener('change', () => {
         ${axis.variation}
       </button>
     </div>
-  `;
+  ;
 
   document.querySelectorAll('.map-answer').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -129,9 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
   categorySelect.value = 'german';
   updateVariations();
 });
-
-
-
 
 
 
