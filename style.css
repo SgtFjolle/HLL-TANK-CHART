@@ -316,6 +316,62 @@ body.light-mode .map-answer.active {
   #image-container {
     flex: 1 1 auto;
   }
+  
+  /* Style for the "Need help?" button */
+#help-toggle {
+  font-size: 1.2em;
+  background: none;
+  border: none;
+  color: #fff5d8;
+  cursor: pointer;
+  margin-left: 10px; /* Adds space between the buttons */
+  padding: 8px 12px;
+}
+
+/* Overlay styling */
+#help-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Arial, sans-serif;
+  z-index: 1000; /* Ensure the overlay is on top */
+}
+
+/* Help content inside the overlay */
+#help-overlay .help-content {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+}
+
+#help-overlay .help-content h2 {
+  font-size: 1.5em;
+}
+
+#help-overlay .help-content p {
+  font-size: 1.1em;
+}
+
+/* Close button for overlay */
+#help-overlay .close-btn {
+  margin-top: 20px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
 }
 
 
