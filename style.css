@@ -107,7 +107,7 @@ select {
   justify-content: center;
   align-items: center;
   position: absolute; /* Keep it outside of the main content */
-  left: 930px; /* Position it 20px from the right */
+  left: 920px; /* Position it from the left*/
   top: 0; /* Position it at the top */
   width: 340px; /* Set the desired width for the banner */
 }
@@ -129,6 +129,7 @@ select {
 /* Map selector panel */
 .map-selector {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 10px;
   background-color: #2a2a2a;
