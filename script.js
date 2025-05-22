@@ -206,6 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
   updateVariations();
 });
 
+// Add "loaded" class to body when page has finished loading
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+
 
 
 
