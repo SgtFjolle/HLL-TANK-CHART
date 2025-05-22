@@ -362,6 +362,46 @@ body.light-mode .map-answer.active {
     flex-direction: column;
     align-items: center;
   }
+  @media (min-width: 768px) {
+  /* PC view: hide fullscreen toggle or place it where you want */
+  #fullscreen-toggle {
+    display: inline-block;
+    margin-left: auto;
+    padding: 8px 14px;
+    font-size: 14px;
+    background-color: #3a3a3a;
+    border: 1px solid #666;
+    color: #fff5d8;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile view: show fullscreen toggle below image */
+  #fullscreen-toggle {
+    display: block;
+    width: 100%;
+    margin: 20px auto 0;
+    font-size: 18px;
+    background-color: #3a3a3a;
+    color: #fff5d8;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  #fullscreen-toggle:hover {
+    background-color: #505050;
+    transform: scale(1.05);
+  }
+
+  .fullscreen-mode #fullscreen-toggle {
+    display: none;
+  }
+}
 
   /* Full-width responsive image */
   #army-image {
