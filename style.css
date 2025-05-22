@@ -46,7 +46,10 @@ h1 {
   flex-direction: column;
   gap: 15px;
 }
-.faction-select-group,
+.faction-select-group {
+  position: relative;  /* This ensures it is positioned normally in the flow */
+  margin-top: 0px;  /* Adjust top margin if needed */
+}
 .variation-select-group {
   display: flex;
   align-items: center;
