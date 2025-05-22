@@ -5,6 +5,33 @@ const armyImage = document.getElementById('army-image');
 const modeToggle = document.getElementById('mode-toggle');
 const fullscreenToggle = document.getElementById('fullscreen-toggle');
 
+// ========== FULLSCREEN TOGGLE FOR MOBILE ==========
+const imageContainer = document.getElementById('image-container');
+
+if (fullscreenToggle) {
+  fullscreenToggle.addEventListener('click', () => {
+    if (!document.body.classList.contains('fullscreen-mode')) {
+      if (imageContainer.requestFullscreen) {
+        imageContainer.requestFullscreen();
+      } else if (imageContainer.webkitRequestFullscreen) {
+        imageContainer.webkitRequestFullscreen();
+      } else if (imageContainer.msRequestFullscreen) {
+        imageContainer.msRequestFullscreen();
+      }
+      document.body.classList.add('fullscreen-mode');
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      document.body.classList.remove('fullscreen-mode');
+    }
+  });
+}
+
 // Image map data
 const imageMap = {
   german: {
@@ -27,7 +54,7 @@ const imageMap = {
 
 let currentCategory = 'german';
 let currentVariation = '';
-let fromMapBlock = false; // Flag to track if the faction is selected from the map block
+let fromMapBlock = false; // Track if faction change came from map block
 
 // Update variations
 function updateVariations() {
@@ -48,26 +75,24 @@ function updateVariations() {
     };
     variationButtons.appendChild(btn);
 
-    // If the faction selection is from the map block, don't select the first variation
     if (!fromMapBlock && index === 0) {
-      btn.click(); // Automatically select the first variation only if the selection is from the dropdown
+      btn.click(); // Auto-select first variation only from dropdown
     }
   });
 
-  // Reset the flag after updating variations
   fromMapBlock = false;
 }
 
 // Show the image based on the selected variation
 function showImage(category, variation) {
   armyImage.classList.remove('visible'); // Hide image initially
-  armyImage.src = imageMap[category][variation];  // Set the new image source
+  armyImage.src = imageMap[category][variation];
   armyImage.alt = variation;
 
   // Trigger image fade-in after it's loaded
   setTimeout(() => {
     armyImage.classList.add('visible');
-  }, 100); // Small delay for smoother transition
+  }, 100);
 }
 
 // Toggle between dark and light mode
@@ -76,13 +101,7 @@ function toggleMode() {
   modeToggle.textContent = isLight ? '☀️' : '🌙';
 }
 
-// Fullscreen toggle functionality
-fullscreenToggle.onclick = () => {
-  const isFs = document.body.classList.toggle('fullscreen-mode');
-  fullscreenToggle.classList.toggle('active', isFs);
-};
-
-// Map-selector feature
+// Map-selector logic
 const mapSelect = document.getElementById('map-select');
 const mapResult = document.getElementById('map-result');
 
@@ -116,11 +135,11 @@ const mapData = {
     axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Kharkov": {
-    allies: { category: 'soviet', variation: 'Soviet Armed Forces' },
+    allies: { category: 'soviet', variation: 'Soviet' },
     axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Kursk": {
-    allies: { category: 'soviet', variation: 'Soviet Armed Forces' },
+    allies: { category: 'soviet', variation: 'Soviet' },
     axis:   { category: 'german', variation: 'German Army' }
   },
   "Mortain": {
@@ -148,7 +167,7 @@ const mapData = {
     axis:   { category: 'german', variation: 'German Army' }
   },
   "Stalingrad": {
-    allies: { category: 'soviet', variation: 'Soviet Armed Forces' },
+    allies: { category: 'soviet', variation: 'Soviet' },
     axis:   { category: 'german', variation: 'German Army Winter Camo' }
   },
   "Tobruk": {
@@ -187,14 +206,13 @@ mapSelect.addEventListener('change', () => {
 
   document.querySelectorAll('.map-answer').forEach(btn => {
     btn.addEventListener('click', () => {
-      fromMapBlock = true; // Set flag to indicate the selection is from the map block
-
-      categorySelect.value = btn.dataset.cat; // Select the correct faction
-      updateVariations(); // This updates the variations based on the new category
+      fromMapBlock = true;
+      categorySelect.value = btn.dataset.cat;
+      updateVariations();
 
       document.querySelectorAll('#variation-buttons button').forEach(vb => {
         if (vb.textContent === btn.dataset.var) {
-          vb.click(); // Set the variation directly, skipping the "first" default variation
+          vb.click();
         }
       });
     });
@@ -204,44 +222,6 @@ mapSelect.addEventListener('change', () => {
 document.addEventListener('DOMContentLoaded', () => {
   categorySelect.value = 'german';
   updateVariations();
-});
-
-// Add "loaded" class to body when page has finished loading
-window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
-});
-
-// ========== FULLSCREEN TOGGLE FOR MOBILE ==========
-const fullscreenToggle = document.getElementById('fullscreen-toggle');
-const imageContainer = document.getElementById('image-container');
-const armyImage = document.getElementById('army-image');
-
-fullscreenToggle.addEventListener('click', () => {
-  if (!document.body.classList.contains('fullscreen-mode')) {
-    // Enter fullscreen
-    if (imageContainer.requestFullscreen) {
-      imageContainer.requestFullscreen();
-    } else if (imageContainer.webkitRequestFullscreen) {
-      imageContainer.webkitRequestFullscreen();
-    } else if (imageContainer.msRequestFullscreen) {
-      imageContainer.msRequestFullscreen();
-    }
-
-    // Add fullscreen mode class to trigger mobile rotation styles
-    document.body.classList.add('fullscreen-mode');
-  } else {
-    // Exit fullscreen
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
-
-    // Remove class after exiting fullscreen
-    document.body.classList.remove('fullscreen-mode');
-  }
 });
 
 
