@@ -114,11 +114,13 @@ select {
   top: -138px; /* Position it at the top */
   width: 440px; /* Set the desired width for the banner */
   padding: 0; /* Remove any padding inside the banner container */
+  margin: 0; /* Remove margin */
 }
 
 #banner-image {
   max-width: 100%;
-  height: auto;
+  height: 100%; /* Ensure the image takes the full height of the container */
+  object-fit: cover; /* Ensures the image covers the container, without gaps */
   border-radius: 4px;
   margin: 0; /* Remove any default margin */
   padding: 0; /* Remove any padding from the image */
