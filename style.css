@@ -113,12 +113,15 @@ select {
   left: 920px; /* Position it from the left*/
   top: -138px; /* Position it at the top */
   width: 440px; /* Set the desired width for the banner */
+  padding: 0; /* Remove any padding inside the banner container */
 }
 
 #banner-image {
   max-width: 100%;
   height: auto;
   border-radius: 4px;
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any padding from the image */
 }
 
 /* Main content: map selector + image */
