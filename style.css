@@ -111,8 +111,8 @@ select {
   align-items: center;
   position: absolute; /* Keep it outside of the main content */
   left: 920px; /* Position it from the left*/
-  top: -130px; /* Position it at the top */
-  width: 425px; /* Set the desired width for the banner */
+  top: -140px; /* Position it at the top */
+  width: 445px; /* Set the desired width for the banner */
 }
 
 #banner-image {
