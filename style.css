@@ -100,16 +100,16 @@ select {
 
 .section.banner-ad {
   background-color: #2a2a2a;
-  border-radius: 6px;
+  border-radius: 4px solid #000000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  padding: 15px;
+  padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute; /* Keep it outside of the main content */
-  right: 20px; /* Position it 20px from the right */
+  right: -60px; /* Position it 20px from the right */
   top: 0; /* Position it at the top */
-  width: 250px; /* Set the desired width for the banner */
+  width: 400px; /* Set the desired width for the banner */
 }
 
 #banner-image {
