@@ -165,14 +165,14 @@ select {
 /* Banner Container */
 #banner-container {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 400px;
-  height: 200px;
-  background-image: url('banner.ad.jpg');
-  background-size: contain;
+  top: 0;
+  left: calc(50% + 450px); /* Same space from the center */
+  width: 400px; /* Width of the banner */
+  height: 200px; /* Adjust height as needed */
+  background-image: url('banner.ad.jpg'); /* Correct path */
+  background-size: contain; /* Maintains aspect ratio */
   background-position: center;
-  display: block;
+  display: block; /* Ensure it's visible in normal view */
   z-index: 10; /* Ensure it appears above other content */
 }
 
@@ -238,6 +238,7 @@ body.fullscreen #banner-container {
   max-width: 95%;
   max-height: 85vh;
 }
+
 
 
 
