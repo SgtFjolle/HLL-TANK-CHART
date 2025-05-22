@@ -162,22 +162,36 @@ select {
   transition: all 0.4s ease;
 }
 
+/* General styles for the site */
+
 /* Banner Container */
 #banner-container {
   position: absolute;
   top: 0;
-  left: calc(50% + 450px); /* Same space from the center */
-  width: 400px; /* Width of the banner */
-  height: 200px; /* Adjust height as needed */
-  background-image: url('banner.ad.jpg'); /* Correct path */
-  background-size: contain; /* Maintains aspect ratio */
+  left: calc(50% + 450px); /* Same space as map from the center */
+  width: 400px; /* Adjust width based on your banner */
+  background-image: url('banner.ad.jpg'); /* Path to your banner image */
+  background-size: contain; /* Keeps the aspect ratio */
   background-position: center;
-  display: block; /* Ensure it's visible in normal view */
-  z-index: 10; /* Ensure it appears above other content */
+  display: block; /* Show by default in standard mode */
 }
 
 /* Hide the banner in fullscreen mode */
 body.fullscreen #banner-container {
+  display: none;
+}
+
+/* Add other general styles below */
+
+/* Example of map selector style */
+.map-selector {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 450px); /* The distance from the center */
+}
+
+/* Hide map-selector in fullscreen */
+.fullscreen-mode .map-selector {
   display: none;
 }
 
@@ -239,6 +253,51 @@ body.fullscreen #banner-container {
   max-height: 85vh;
 }
 
+/* Light mode overrides */
+body.light-mode {
+  background-color: #f2f2f2;
+  color: #111;
+}
+body.light-mode h1 {
+  color: #000;
+}
+body.light-mode .section.unified-controls,
+body.light-mode .map-selector {
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+body.light-mode select,
+body.light-mode button,
+body.light-mode .map-answer {
+  background-color: #ddd;
+  color: #000;
+  border: 1px solid #aaa;
+}
+body.light-mode button:hover,
+body.light-mode .map-answer:hover {
+  background-color: #bbb;
+}
+body.light-mode button.active,
+body.light-mode .map-answer.active {
+  background-color: #aaa;
+}
 
+/* —— DESKTOP-ONLY LAYOUT TWEAK —— */
+@media (min-width: 768px) {
+  .main-content {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .map-selector {
+    position: absolute;
+    top: 0;
+    left: calc(50% - 450px - 220px - 50px);
+    width: 220px;
+  }
+  #image-container {
+    flex: 1 1 auto;
+  }
+}
 
 
