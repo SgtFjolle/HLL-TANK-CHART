@@ -1,3 +1,14 @@
+/* Initial opacity set to 0 for fade-in effect */
+body {
+  opacity: 0;
+  transition: opacity 1s ease-in;
+}
+
+/* When the page has fully loaded, opacity will transition to 1 */
+body.loaded {
+  opacity: 1;
+}
+
 /* Base styling */
 body {
   margin: 0;
