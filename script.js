@@ -4,6 +4,10 @@ const variationButtons = document.getElementById('variation-buttons');
 const armyImage = document.getElementById('army-image');
 const modeToggle = document.getElementById('mode-toggle');
 const fullscreenToggle = document.getElementById('fullscreen-toggle');
+// Get the "Need help?" button and overlay
+const helpButton = document.getElementById('help-toggle');
+const helpOverlay = document.getElementById('help-overlay');
+const closeBtn = document.getElementById('close-overlay');
 
 // Image map data
 const imageMap = {
@@ -206,6 +210,22 @@ document.addEventListener('DOMContentLoaded', () => {
   updateVariations();
 });
 
+// Show the help overlay when "Need help?" is clicked
+helpButton.addEventListener('click', () => {
+  helpOverlay.style.display = 'flex'; // Show the overlay
+});
+
+// Close the overlay when the close button is clicked
+closeBtn.addEventListener('click', () => {
+  helpOverlay.style.display = 'none'; // Hide the overlay
+});
+
+// Close the overlay if clicked outside the content area
+helpOverlay.addEventListener('click', (e) => {
+  if (e.target === helpOverlay) {
+    helpOverlay.style.display = 'none'; // Hide the overlay if the background is clicked
+  }
+});
 
 
 
