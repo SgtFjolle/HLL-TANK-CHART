@@ -162,34 +162,6 @@ select {
   transition: all 0.4s ease;
 }
 
-/* General styles for the site */
-
-/* Banner Container */
-#banner-container {
-  position: absolute;
-  top: 0;
-  left: calc(50% + 450px); /* Same space as map from the center */
-  width: 400px; /* Adjust width based on your banner */
-  background-image: url('banner.ad.jpg'); /* Path to your banner image */
-  background-size: contain; /* Keeps the aspect ratio */
-  background-position: center;
-  display: block; /* Show by default in standard mode */
-}
-
-/* Hide the banner in fullscreen mode */
-body.fullscreen #banner-container {
-  display: none;
-}
-
-/* Add other general styles below */
-
-/* Example of map selector style */
-.map-selector {
-  position: absolute;
-  top: 0;
-  left: calc(50% - 450px); /* The distance from the center */
-}
-
 /* Hide map-selector in fullscreen */
 .fullscreen-mode .map-selector {
   display: none;
@@ -292,12 +264,13 @@ body.light-mode .map-answer.active {
   .map-selector {
     position: absolute;
     top: 0;
-    left: calc(50% - 450px - 220px - 50px);
+    left: calc(50% - 450px - 220px - 20px);
     width: 220px;
   }
   #image-container {
     flex: 1 1 auto;
   }
 }
+
 
 
