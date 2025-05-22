@@ -62,6 +62,11 @@ function toggleMode() {
 fullscreenToggle.onclick = () => {
   const isFs = document.body.classList.toggle('fullscreen-mode');
   fullscreenToggle.classList.toggle('active', isFs);
+  if (isFs) {
+    document.body.classList.add('fullscreen');
+  } else {
+    document.body.classList.remove('fullscreen');
+  }
 };
 
 // Map-selector feature
@@ -184,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
   categorySelect.value = 'german';
   updateVariations();
 });
-
 
 
 
