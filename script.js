@@ -211,6 +211,38 @@ window.addEventListener('load', () => {
   document.body.classList.add('loaded');
 });
 
+// ========== FULLSCREEN TOGGLE FOR MOBILE ==========
+const fullscreenToggle = document.getElementById('fullscreen-toggle');
+const imageContainer = document.getElementById('image-container');
+const armyImage = document.getElementById('army-image');
+
+fullscreenToggle.addEventListener('click', () => {
+  if (!document.body.classList.contains('fullscreen-mode')) {
+    // Enter fullscreen
+    if (imageContainer.requestFullscreen) {
+      imageContainer.requestFullscreen();
+    } else if (imageContainer.webkitRequestFullscreen) {
+      imageContainer.webkitRequestFullscreen();
+    } else if (imageContainer.msRequestFullscreen) {
+      imageContainer.msRequestFullscreen();
+    }
+
+    // Add fullscreen mode class to trigger mobile rotation styles
+    document.body.classList.add('fullscreen-mode');
+  } else {
+    // Exit fullscreen
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+
+    // Remove class after exiting fullscreen
+    document.body.classList.remove('fullscreen-mode');
+  }
+});
 
 
 
