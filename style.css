@@ -162,8 +162,6 @@ select {
   transition: all 0.4s ease;
 }
 
-/* General styles for the site */
-
 /* Banner Container */
 #banner-container {
   position: absolute;
@@ -180,8 +178,6 @@ select {
 body.fullscreen #banner-container {
   display: none;
 }
-
-/* Add other general styles below */
 
 /* Example of map selector style */
 .map-selector {
