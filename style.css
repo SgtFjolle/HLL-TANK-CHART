@@ -162,6 +162,17 @@ select {
   transition: all 0.4s ease;
 }
 
+/* Banner Container */
+#banner-container {
+  position: absolute;
+  top: 0;
+  left: calc(50% + 450px); /* Same space as map from the center */
+  width: 220px; /* Adjust width based on your banner */
+  background-image: url('banner.ad.jpg'); /* Path to your banner image */
+  background-size: cover;
+  background-position: center;
+}
+
 /* Hide map-selector in fullscreen */
 .fullscreen-mode .map-selector {
   display: none;
