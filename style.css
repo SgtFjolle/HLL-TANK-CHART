@@ -145,6 +145,53 @@ select {
   background-color: #666;
 }
 
+/* New banner container for image */
+.section.banner-ad {
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px; /* Adjust based on your image size */
+}
+
+#banner-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Adjust position for map-selector and banner-ad */
+.main-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+/* Make sure the banner is on the right side */
+.banner-ad {
+  flex-shrink: 0; /* Prevent it from shrinking */
+  order: 2; /* Place it to the right */
+}
+
+.map-selector {
+  flex: 1; /* Allow it to take more space on the left */
+  order: 1; /* Place it to the left */
+}
+
+#image-container {
+  flex: 1 1 auto;
+  margin-left: 20px;
+}
+
+/* Hide the banner in fullscreen mode */
+.fullscreen-mode .section.banner-ad {
+  display: none;
+}
+
 /* Image container */
 #image-container {
   text-align: center;
