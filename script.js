@@ -151,7 +151,7 @@ mapSelect.addEventListener('change', () => {
   }
   const { allies, axis } = mapData[map];
 
-  mapResult.innerHTML = 
+  mapResult.innerHTML = `
     <p>This map is played by:</p>
     <div class="map-line">
       <span>ALLIES:</span>
@@ -165,7 +165,7 @@ mapSelect.addEventListener('change', () => {
         ${axis.variation}
       </button>
     </div>
-  ;
+  `;
 
   document.querySelectorAll('.map-answer').forEach(btn => {
     btn.addEventListener('click', () => {
