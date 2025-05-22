@@ -102,14 +102,14 @@ select {
   background-color: #2a2a2a;
   border-radius: 4px solid #000000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  padding: 8px;
+  padding: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute; /* Keep it outside of the main content */
-  right: -60px; /* Position it 20px from the right */
+  right: 450px; /* Position it 20px from the right */
   top: 0; /* Position it at the top */
-  width: 400px; /* Set the desired width for the banner */
+  width: 300px; /* Set the desired width for the banner */
 }
 
 #banner-image {
