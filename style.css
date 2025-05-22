@@ -165,29 +165,19 @@ select {
 /* Banner Container */
 #banner-container {
   position: absolute;
-  top: 0;
-  left: calc(50% + 450px); /* Same space as map from the center */
-  width: 400px; /* Adjust width based on your banner */
-  background-image: url('banner.ad.jpg'); /* Path to your banner image */
-  background-size: contain; /* Keeps the aspect ratio */
+  top: 10px;
+  left: 10px;
+  width: 400px;
+  height: 200px;
+  background-image: url('banner.ad.jpg');
+  background-size: contain;
   background-position: center;
-  display: block; /* Show by default in standard mode */
+  display: block;
+  z-index: 10; /* Ensure it appears above other content */
 }
 
 /* Hide the banner in fullscreen mode */
 body.fullscreen #banner-container {
-  display: none;
-}
-
-/* Example of map selector style */
-.map-selector {
-  position: absolute;
-  top: 0;
-  left: calc(50% - 450px); /* The distance from the center */
-}
-
-/* Hide map-selector in fullscreen */
-.fullscreen-mode .map-selector {
   display: none;
 }
 
@@ -247,53 +237,6 @@ body.fullscreen #banner-container {
   margin: 0 auto;
   max-width: 95%;
   max-height: 85vh;
-}
-
-/* Light mode overrides */
-body.light-mode {
-  background-color: #f2f2f2;
-  color: #111;
-}
-body.light-mode h1 {
-  color: #000;
-}
-body.light-mode .section.unified-controls,
-body.light-mode .map-selector {
-  background-color: #fff;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}
-body.light-mode select,
-body.light-mode button,
-body.light-mode .map-answer {
-  background-color: #ddd;
-  color: #000;
-  border: 1px solid #aaa;
-}
-body.light-mode button:hover,
-body.light-mode .map-answer:hover {
-  background-color: #bbb;
-}
-body.light-mode button.active,
-body.light-mode .map-answer.active {
-  background-color: #aaa;
-}
-
-/* —— DESKTOP-ONLY LAYOUT TWEAK —— */
-@media (min-width: 768px) {
-  .main-content {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  .map-selector {
-    position: absolute;
-    top: 0;
-    left: calc(50% - 450px - 220px - 50px);
-    width: 220px;
-  }
-  #image-container {
-    flex: 1 1 auto;
-  }
 }
 
 
